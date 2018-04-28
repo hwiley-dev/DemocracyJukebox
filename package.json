@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/teachcoding/expresstemplate-static/issues"
   },
-  "homepage": "https://github.com/teachcoding/expresstemplate-static#readme"
+  "homepage": "https://github.com/teachcoding/expresstemplate-static#readme",
+  "devDependencies": {}
 }
