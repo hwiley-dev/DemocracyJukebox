@@ -12,15 +12,28 @@
 </head>
 
 <body>
-  <div class="jumbotron">
-    <h1 class="display-3"></h1>
-    <p class="lead">This is an index entry point for an express application</p>
-    <hr class="my-4">
-    <p>Replace this jumbotron with your own html!</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>What do you want to hear?</h1>
+      <!-- this will have the form -->
+      <form class="form-inline">
+        <div class="form-group">
+          <label>Song Name</label>
+          <input class="form-control" id="songName">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-default" id="sbmt">Submit</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <!-- this will have a list of songs -->
+      <h1>Songs</h1>
+    </div>
   </div>
+
+</div>
 
   <!-- jquery cdn -->
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
@@ -30,7 +43,16 @@
   <script>
     
   </script>
-  <script src="../js/app.js"></script>
+  <!-- <script src="../js/app.js"></script> -->
+  <script type='text/javascript'>
+
+$('#sbmt').on('click', () => {
+  event.preventDefault()
+  var songName = $('#songName').val()
+  console.log(songName)
+})
+
+  </script>
   
 </body>
 
