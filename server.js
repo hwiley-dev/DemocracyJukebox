@@ -18,7 +18,7 @@ app.get('/getContact', function (req, res) {
   res.json(userArr)
 })
 
-app.get('/contact', function (req, res){
+app.get('/contact', function (req, res) {
   res.redirect('contact.html')
 })
 
