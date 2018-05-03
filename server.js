@@ -2,7 +2,7 @@
 var express = require('express')
 var bodyparser = require('body-parser')
 var path = require('path')
-var htmlApiRoutes = require('./routes/html-api-routes')
+var router = require('./controllers/routes')
 // new express app
 var app = express()
 
@@ -10,11 +10,12 @@ var app = express()
 app.use(express.static(path.join(__dirname, 'public/views')))
 app.use(bodyparser.urlencoded({extended: true}))
 app.use(bodyparser.json())
+app.use('/', router)
 
 // your code here...
 var userArr = []
 
-htmlApiRoutes(app)
+
 
 var PORT = process.env.PORT || 3000
 // listening port
