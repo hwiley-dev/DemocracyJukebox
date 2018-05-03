@@ -53,7 +53,14 @@ $('#sbmt').on('click', () => {
   event.preventDefault()
   var songName = $('#songName').val()
   console.log(songName)
+  $.ajax({
+    method: 'POST',
+    dataType: 'json',
+    url: 'song/create',
+    data: {songName: songName}
+  })
 })
+
 
   </script>
   
