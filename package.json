@@ -15,15 +15,8 @@
     "express": "^4.16.3",
     "morgan": "^1.9.0",
     "sequelize": "^4.37.6",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "youtube-player": "^5.5.0"
-=======
+    "youtube-player": "^5.5.0",
     "youtube-search": "^1.1.0"
->>>>>>> 88e3f981301b89885f3c2c8c5e48435596e26864
-=======
-    "youtube-search": "^1.1.0"
->>>>>>> 88e3f981301b89885f3c2c8c5e48435596e26864
   },
   "repository": {
     "type": "git",
