@@ -10,7 +10,6 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
 </head>
-
 <body>
 <div class="container">
   <div class="row">
@@ -27,7 +26,7 @@
       </form>
     </div>
 
-    <div class="col-md-6">
+    <div id="results" class="col-md-6">
       <!-- this will have a list of songs -->
       <h1>Songs</h1>
     </div>
@@ -46,11 +45,6 @@
   <!-- <script src="../js/app.js"></script> -->
   <script type='text/javascript'>
 
-$('#sbmt').on('click', () => {
-  event.preventDefault()
-  var songName = $('#songName').val()
-  console.log(songName)
-})
 
   </script>
   
