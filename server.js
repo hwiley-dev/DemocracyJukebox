@@ -2,7 +2,7 @@
 var express = require('express')
 var bodyparser = require('body-parser')
 var path = require('path')
-
+var htmlApiRoutes = require('./routes/html-api-routes')
 // new express app
 var app = express()
 
@@ -14,10 +14,7 @@ app.use(bodyparser.json())
 // your code here...
 var userArr = []
 
-app.post('/song/create', function (req, res) {
-  console.log(req.body)
-})
-
+htmlApiRoutes(app)
 
 var PORT = process.env.PORT || 3000
 // listening port
