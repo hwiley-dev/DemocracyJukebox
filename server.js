@@ -14,16 +14,28 @@ app.use(bodyparser.json())
 // your code here...
 var userArr = []
 
-app.get('/getContact', function (req, res) {
-  res.json(userArr)
+app.post('/song/create', function (req, res) {
+  console.log(req.body)
 })
 
-app.get('/contact', function (req, res) {
-  res.redirect('contact.html')
-})
 
 var PORT = process.env.PORT || 3000
 // listening port
 app.listen(PORT, function (e) {
   if (e) throw e
+})
+
+var search = require('youtube-search')
+
+var opts = {
+  maxResults: 1,
+  key: 'AIzaSyBJV-QAc3rs1A8tfuyr4ZqKxypDqkqJLYg',
+  type: 'video'
+}
+
+var searchTerm = 69
+search(searchTerm, opts, function (err, results) {
+  if (err) return console.log(err)
+
+  console.dir(results[0].link)
 })
