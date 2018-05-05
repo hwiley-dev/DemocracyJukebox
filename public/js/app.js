@@ -1,17 +1,18 @@
-$(function(){
+$(function () {
   $('form').on('submit', function (e) {
-    e.preventDefault();
-    //prepare request
+    e.preventDefault()
+    // prepare request
     var request = gapi.client.youtube.search.list({
       part: 'snippet',
       // below we can choose type: video || channel || playlist
       type: 'video',
-      q: encodeURIComponent($('#search').val()).replace(/%20/g, "+"),
+      q: encodeURIComponent($('#search').val()).replace(/%20/g, '+'),
       maxResults: 10,
-      order: 'viewCount',
+      order: 'viewCount'
 
-    });
+    })
     // Execute Request
+
     request.execute(function(response){
       var results = response.results;
       $.each(results.items, function(index, item) {
@@ -27,11 +28,12 @@ $(function(){
   });
 });
 
-function init() {
-  gapi.client.setApiKey('AIzaSyAzHZIl1ZJ639hzfiQEJgW2ZdxqfrCCKQ0');
+
+function init () {
+  gapi.client.setApiKey('AIzaSyAzHZIl1ZJ639hzfiQEJgW2ZdxqfrCCKQ0')
   gapi.client.load('youtube', 'v3', function () {
 
-  });
+  })
 }
 
 $('#sbmt').on('click', () => {
@@ -39,4 +41,3 @@ $('#sbmt').on('click', () => {
   var songName = $('#songName').val()
   console.log(songName)
 })
-

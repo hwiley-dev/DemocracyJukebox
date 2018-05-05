@@ -14,7 +14,7 @@ var opts = {
 router.post('/song/create', (req, res) => {
   console.log(req.body)
 
-  //search for the song name submitted on front end
+  // search for the song name submitted on front end
   search(req.body.songName, opts, function (err, results) {
     if (err) return console.log(err)
     db.Playlist.create({
@@ -30,6 +30,10 @@ router.post('/song/create', (req, res) => {
   })
 })
 
+router.post('/vote/create', (req, res) => {
+  console.log(req.body)
+})
+
 router.get('/song/playlist', (req, res) => {
   if (err) return console.log(err)
   
@@ -38,7 +42,6 @@ router.get('/song/playlist', (req, res) => {
 
   })
 })
-
 
 
 
