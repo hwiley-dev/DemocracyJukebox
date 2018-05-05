@@ -1,7 +1,10 @@
 
+  var songIDs = []
+
   $('#sbmt').on('click', () => {
     event.preventDefault()
     var songName = $('#songName').val()
+    var video
     var data = {
       songName: songName
     }
@@ -11,12 +14,19 @@
       console.log('ping')
       getVideos()
     })
+    // video = songIDs[songIDs.length-1]
+    // onYouTubeIframeAPIReady(video)
   })
 
   function getVideos () {
     $.get('/all/videos').then(function (r) {
-      console.log(r)
+    for(var i = 0; i<r.length; i++){  
+      console.log(r[i].video_id)
+      var songID = r[i].video_id
+      onYouTubeIframeAPIReady(songID)
+    }
     })
+
   }
         // 2. This code loads the IFrame Player API code asynchronously.
         var tag = document.createElement('script');
@@ -28,18 +38,13 @@
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
         var player;
+     
   
-//   function getStuff () {
-//     $.get('/song', function(data){
-//     console.log("this is the ID: " + " " + data)
-//   }) 
-// }     
-  
-        function onYouTubeIframeAPIReady() {
+        function onYouTubeIframeAPIReady(video) {
           player = new YT.Player('player', {
             height: '390',
             width: '640',
-            videoId: '2YvG0NbYJpE',
+            videoId: video,
             events: {
               'onReady': onPlayerReady,
               'onStateChange': onPlayerStateChange
