@@ -10,7 +10,7 @@ var opts = {
   key: process.env.YT_KEY,
   type: 'video'
 }
-
+var videoID
 // this route gets a song from the user and sends it to the db
 router.post('/song/create', (req, res) => {
   console.log(req.body)
@@ -18,16 +18,26 @@ router.post('/song/create', (req, res) => {
   // search for the song name submitted on front end
   search(req.body.songName, opts, function (err, results) {
     if (err) return console.log(err)
+    //create the playlist
     db.Playlist.create({
       song_name: results[0].title,
       video_link: results[0].link,
       video_id: results[0].id,
       thumbnail_url: results[0].thumbnails.default.url
     })
+    videoID = results[0].id
     console.dir(results[0].id)
     console.dir(results[0].link)
     console.log(results)
     console.dir(results[0].thumbnails.default.url)
+  })
+  res.send(200)
+})
+
+router.get('/all/videos', function (req, res) {
+  console.log('ping')
+  db.Playlist.findAll({}).then(function (r) {
+    res.json(r)
   })
 })
 
@@ -39,14 +49,11 @@ router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-router.get('/song/playlist', (req, res) => {
-  if (err) return console.log(err)
-  
-  //returning data from database
-  db.Playlist.findAll({}).then(function(dbPlaylist){
-    console.log(res.json(dbPlaylist))
-  })
-})
+// router.get('/song', (req, res) => {
+//   //returning data from database
+//   res.send(videoID)
+
+// })
 
 
 
