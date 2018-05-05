@@ -1,6 +1,7 @@
 require('dotenv').config()
 var express = require('express')
 var router = express.Router()
+var path = require("path");
 var db = require('../models')
 
 var search = require('youtube-search')
@@ -28,6 +29,10 @@ router.post('/song/create', (req, res) => {
     console.log(results)
     console.dir(results[0].thumbnails.default.url)
   })
+})
+
+router.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, "../public/views/"))
 })
 
 router.post('/vote/create', (req, res) => {
