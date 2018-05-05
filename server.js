@@ -9,7 +9,6 @@ var db = require('./models')
 var app = express()
 var PORT = process.env.PORT || 3000
 
-
 // middleware
 app.use(express.static(path.join(__dirname, 'public/views')))
 app.use(bodyparser.urlencoded({extended: true}))
@@ -17,14 +16,9 @@ app.use(bodyparser.json())
 app.use('/', router)
 
 // your code here...
-db.sequelize.sync({ force: true}).then(function() {
+db.sequelize.sync({ force: true}).then(function () {
   // listening port
   app.listen(PORT, function (e) {
     if (e) throw e
   })
 })
-
-
-
-
-
