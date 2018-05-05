@@ -20,6 +20,12 @@ module.exports = function(sequelize, DataTypes){
         },
         votes : {
             type: DataTypes.INTEGER
+        },
+        video_id : {
+            type: DataTypes.STRING
+        },
+        thumbnail_url : {
+            type: DataTypes.STRING
         }
     })
     return Playlist
