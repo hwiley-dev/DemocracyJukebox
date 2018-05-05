@@ -1,6 +1,7 @@
 require('dotenv').config()
 var express = require('express')
 var router = express.Router()
+var path = require("path");
 var db = require('../models')
 
 var search = require('youtube-search')
@@ -14,7 +15,7 @@ var opts = {
 router.post('/song/create', (req, res) => {
   console.log(req.body)
 
-  //search for the song name submitted on front end
+  // search for the song name submitted on front end
   search(req.body.songName, opts, function (err, results) {
     if (err) return console.log(err)
     db.Playlist.create({
@@ -30,15 +31,22 @@ router.post('/song/create', (req, res) => {
   })
 })
 
+router.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, "../public/views/"))
+})
+
+router.post('/vote/create', (req, res) => {
+  console.log(req.body)
+})
+
 router.get('/song/playlist', (req, res) => {
   if (err) return console.log(err)
   
   //returning data from database
-  db.Playlist.findAll({
-
+  db.Playlist.findAll({}).then(function(dbPlaylist){
+    console.log(res.json(dbPlaylist))
   })
 })
-
 
 
 
