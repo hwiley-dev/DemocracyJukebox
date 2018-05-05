@@ -38,8 +38,8 @@ router.get('/song/playlist', (req, res) => {
   if (err) return console.log(err)
   
   //returning data from database
-  db.Playlist.findAll({
-
+  db.Playlist.findAll({}).then(function(dbPlaylist){
+    console.log(res.json(dbPlaylist))
   })
 })
 

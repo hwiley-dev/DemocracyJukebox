@@ -10,7 +10,7 @@ var app = express()
 var PORT = process.env.PORT || 3000
 
 // middleware
-app.use(express.static(path.join(__dirname, 'public/views')))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 app.use('/', router)
