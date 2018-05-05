@@ -27,10 +27,4 @@ db.sequelize.sync({ force: true}).then(function() {
 
 
 
-  // console.dir(results[0].link)
-  var videoID = results[0].id
-  return videoID
 
-
-
-console.log(videoID)
