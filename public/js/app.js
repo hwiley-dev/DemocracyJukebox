@@ -20,10 +20,11 @@ $(function(){
           $("#results").append(data);
         
         });
+        console.log(results)
+        console.log(response)
       });
     });
   });
-      console.log
 });
 
 function init() {
