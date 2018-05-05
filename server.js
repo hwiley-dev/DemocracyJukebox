@@ -3,8 +3,12 @@ var express = require('express')
 var bodyparser = require('body-parser')
 var path = require('path')
 var router = require('./controllers/routes')
+var db = require('./models')
+
 // new express app
 var app = express()
+var PORT = process.env.PORT || 3000
+
 
 // middleware
 app.use(express.static(path.join(__dirname, 'public/views')))
@@ -13,30 +17,20 @@ app.use(bodyparser.json())
 app.use('/', router)
 
 // your code here...
-var userArr = []
-
-var PORT = process.env.PORT || 3000
-// listening port
-app.listen(PORT, function (e) {
-  if (e) throw e
+db.sequelize.sync({ force: true}).then(function() {
+  // listening port
+  app.listen(PORT, function (e) {
+    if (e) throw e
+  })
 })
 
-var search = require('youtube-search')
 
-var opts = {
-  maxResults: 1,
-  key: 'AIzaSyBJV-QAc3rs1A8tfuyr4ZqKxypDqkqJLYg',
-  type: 'video'
-}
 
-var searchTerm = 69
-search(searchTerm, opts, function (err, results) {
-  if (err) return console.log(err)
 
   // console.dir(results[0].link)
   var videoID = results[0].id
   return videoID
 
-})
+
 
 console.log(videoID)
