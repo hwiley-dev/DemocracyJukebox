@@ -12,18 +12,22 @@ $(function () {
 
     })
     // Execute Request
-    request.execute(function (response) {
-      var results = response.results
-      $.each(results.items, function (index, item) {
-        // below is get params for youtube api with an append to the front div while passing through data
-        $.get('tpl/item.html', function (data) {
-          $('#results').append(data)
-        })
-      })
-    })
-  })
-  console.log
-})
+
+    request.execute(function(response){
+      var results = response.results;
+      $.each(results.items, function(index, item) {
+        //below is get params for youtube api with an append to the front div while passing through data
+        $.get("tpl/item.html", function(data) {
+          $("#results").append(data);
+        
+        });
+        console.log(results)
+        console.log(response)
+      });
+    });
+  });
+});
+
 
 function init () {
   gapi.client.setApiKey('AIzaSyAzHZIl1ZJ639hzfiQEJgW2ZdxqfrCCKQ0')

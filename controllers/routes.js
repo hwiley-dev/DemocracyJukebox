@@ -19,15 +19,30 @@ router.post('/song/create', (req, res) => {
     if (err) return console.log(err)
     db.Playlist.create({
       song_name: results[0].title,
-      video_link: results[0].link
+      video_link: results[0].link,
+      video_id: results[0].id,
+      thumbnail_url: results[0].thumbnails.default.url
     })
+    console.dir(results[0].id)
     console.dir(results[0].link)
     console.log(results)
+    console.dir(results[0].thumbnails.default.url)
   })
 })
 
 router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
+
+router.get('/song/playlist', (req, res) => {
+  if (err) return console.log(err)
+  
+  //returning data from database
+  db.Playlist.findAll({
+
+  })
+})
+
+
 
 module.exports = router
