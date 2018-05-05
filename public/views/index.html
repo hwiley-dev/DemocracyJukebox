@@ -33,7 +33,9 @@
       <!-- this will have a list of songs -->
       <h1>Songs</h1>
     </div>
+   <div>
     <button type="button" id="upvote" class="btn btn-primary">Primary</button>
+   </div>
     <button type="button" id="downvote" class="btn btn-danger">Danger</button>
     <div id="player"></div>
     
@@ -64,6 +66,7 @@ $('#sbmt').on('click', () => {
   })
 })
 
+//upvoter for upvoting songs
 $("#upvote").on('click', () => {
   event.preventDefault()
    votes = votes+1
