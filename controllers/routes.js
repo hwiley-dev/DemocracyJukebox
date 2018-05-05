@@ -1,3 +1,4 @@
+require('dotenv').config()
 var express = require('express')
 var router = express.Router()
 var db = require('../models')
@@ -5,7 +6,7 @@ var db = require('../models')
 var search = require('youtube-search')
 var opts = {
   maxResults: 1,
-  key: 'AIzaSyBJV-QAc3rs1A8tfuyr4ZqKxypDqkqJLYg',
+  key: process.env.YT_KEY,
   type: 'video'
 }
 
