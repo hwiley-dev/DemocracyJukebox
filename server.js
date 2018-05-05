@@ -8,14 +8,12 @@ var app = express()
 
 // middleware
 app.use(express.static(path.join(__dirname, 'public/views')))
-app.use(bodyparser.urlencoded({extended: true}))
+app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 app.use('/', router)
 
 // your code here...
 var userArr = []
-
-
 
 var PORT = process.env.PORT || 3000
 // listening port
@@ -35,5 +33,10 @@ var searchTerm = 69
 search(searchTerm, opts, function (err, results) {
   if (err) return console.log(err)
 
-  console.dir(results[0].link)
+  // console.dir(results[0].link)
+  var videoID = results[0].id
+  return videoID
+
 })
+
+console.log(videoID)
