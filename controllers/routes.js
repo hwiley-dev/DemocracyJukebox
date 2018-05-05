@@ -34,6 +34,7 @@ router.post('/song/create', (req, res) => {
   res.send(200)
 })
 
+//added by Qdwag
 router.get('/all/videos', function (req, res) {
   console.log('ping')
   db.Playlist.findAll({}).then(function (r) {
@@ -42,19 +43,11 @@ router.get('/all/videos', function (req, res) {
 })
 
 router.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, "../public/views/"))
+  res.sendFile(path.join(__dirname, "../public/views/index.html"))
 })
 
 router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
-
-// router.get('/song', (req, res) => {
-//   //returning data from database
-//   res.send(videoID)
-
-// })
-
-
 
 module.exports = router
