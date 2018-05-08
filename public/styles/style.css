@@ -1,4 +1,74 @@
+body, html {
+  height: 100%;
+  color: whitesmoke;
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
 /* this is for the up and down buttons */
+body {
+  background: rgba(117, 18, 0);
+
+}
+
+/* Trying to make main div with opaque background -- NOT WORKING  */
+.main {
+  background: rgba(117, 18, 0, .1);
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.parallax {
+  /* The image used */
+  background-image: url('../views/images/music_parallax.png');
+
+  /* Full height */
+  height: 800px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+/* Parallax Styling */
+/* 
+#keyart-5 {
+  background-image: url(../views/images/headphone_parallax.png);
+  
+}
+
+#keyart-6 {
+  background-image: url(../views/images/music_parallax.png);
+
+}
+.keyart_layer {
+  background-position: bottom center;
+  background-size: auto 1038px;
+  background-repeat: repeat-x;
+  width: 100%;
+  position: absolute;
+}
+
+.keyart {
+  position: relative;
+  z-index: 10;
+}
+
+.keyart, .keyart_layer {
+  height: 1000px;
+}
+.keyart_layer.parallax {
+  position: fixed;
+}
+  
+.parallax {
+  display: block;
+}
+
+
+ */
+
 * {
   box-sizing: border-box;
 }
