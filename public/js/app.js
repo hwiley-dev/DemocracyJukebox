@@ -16,9 +16,9 @@ $('#sbmt').on('click', () => {
 
 function getSongs() {
   $.get('/all/videos').then(function (r) {
-    // console.log(r)
     var songs = r
     getTable(songs)
+    // console.log(r)
   })
   .catch(function(err){
     console.log(err);
@@ -29,7 +29,7 @@ function getSongs() {
 getSongs()
 
 function getTable(songs){
-  console.log(songs)
+  // console.log(songs)
   $("#songs").empty()
   
   for (i = 0; i < songs.length; i++){
@@ -100,19 +100,38 @@ function onYouTubeIframeAPIReady() {
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  // event.target.playVideo();
+  event.target.playVideo();
 }
 
+
+function onPlayerStateChange(event) {        
+  if(event.data === 0) {
+    $.get('/next/videos').then(function (r) {
+      console.log(r)
+    })
+    .catch(function(err){
+      console.log(err);
+    })           
+  }
+}
+$.get('/next/videos').then(function (r) {
+  console.log(r)
+})
+.catch(function(err){
+  console.log(err);
+})       
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
-  }
-}
+
+// var done = false;
+// function onPlayerStateChange(event) {
+//   if (event.data == YT.PlayerState.PLAYING && !done) {
+//     setTimeout(stopVideo, 6000);
+//     done = true;
+//   }
+// }
+
 function stopVideo() {
   player.stopVideo();
 }
