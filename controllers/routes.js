@@ -10,6 +10,25 @@ var opts = {
   key: process.env.YT_KEY,
   type: 'video'
 }
+var videoID
+
+router.put('/song/upvote/:id', function(req, res) {
+  console.log(req.params.id)
+  // db.Playlist.update({
+  //   where: {
+  //     id: null
+  //   }
+  // });
+})
+
+router.put('/song/downvote/:id', function(req, res) {
+  console.log(req.params.id)
+  // db.Playlist.update({
+  //   where: {
+  //     id: null
+  //   }
+  // });
+})
 
 // this route gets a song from the user and sends it to the db
 router.post('/song/create', (req, res) => {
@@ -18,35 +37,51 @@ router.post('/song/create', (req, res) => {
   // search for the song name submitted on front end
   search(req.body.songName, opts, function (err, results) {
     if (err) return console.log(err)
+    //create the playlist
     db.Playlist.create({
       song_name: results[0].title,
       video_link: results[0].link,
       video_id: results[0].id,
-      thumbnail_url: results[0].thumbnails.default.url
+      thumbnail_url: results[0].thumbnails.default.url,
+      votes: 0
+    }).then(function(data){
+      db.Playlist.findAll({}).then(function (r) {
+        res.json(r)
+      })
     })
-    console.dir(results[0].id)
-    console.dir(results[0].link)
-    console.log(results)
-    console.dir(results[0].thumbnails.default.url)
+    .catch(function(err){
+      console.log(err);
+    })
+    // videoID = results[0].id
+    // console.dir(results[0].id)
+    // console.dir(results[0].link)
+    // console.dir(results[0].thumbnails.default.url)
+
+    // console.log(videoID)
+  })
+  
+})
+
+router.get('/all/videos', function (req, res) {
+  console.log('ping')
+  db.Playlist.findAll({}).then(function (r) {
+    res.json(r)
   })
 })
 
 router.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, "../public/views/"))
+  res.sendFile(path.join(__dirname, "../public/views/index.html"))
 })
 
 router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-router.get('/song/playlist', (req, res) => {
-  if (err) return console.log(err)
-  
-  //returning data from database
-  db.Playlist.findAll({}).then(function(dbPlaylist){
-    console.log(res.json(dbPlaylist))
-  })
-})
+// router.get('/song', (req, res) => {
+//   //returning data from database
+//   res.send(videoID)
+
+// })
 
 
 
