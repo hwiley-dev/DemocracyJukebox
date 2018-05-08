@@ -61,7 +61,6 @@ $(document).on('click', '#downvote', function(){
   $.ajax({
     url: '/song/downvote/'+voteID,
     type: 'PUT',
-    data: "name=John&location=Boston",
     success: function(data) {
       // alert('Load was performed.');
     }
