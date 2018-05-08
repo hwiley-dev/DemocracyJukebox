@@ -28,6 +28,9 @@ module.exports = function (sequelize, DataTypes) {
     },
     thumbnail_url: {
       type: DataTypes.STRING
+    },
+    large_thumbnail_url:{
+      type: DataTypes.STRING
     }
 
   })

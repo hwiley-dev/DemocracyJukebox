@@ -6,6 +6,8 @@ $('#sbmt').on('click', () => {
   var data = {
     songName: songName
   }
+  $('#songName').val('')
+
   console.log(songName)
 
   $.post('/song/create', data).then(function (r) {
@@ -48,10 +50,10 @@ function getTable(songs){
     var counter =i+1
     $("#songs").append(`
     <tr>
-    <th scope="row">` + counter + `</th>
-    <td><button id="downvote" data-value="` + songs[i].id + `" class="btn btn-primary">-</button> ` + songs[i].votes + ` <button  id="upvote" data-value="` + songs[i].id + `" class="btn btn-primary">+</button></td>
+    <th scope="row" class="align-middle">` + counter + `</th>
+    <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
-    <td>` + songs[i].song_name + `</td>
+    <td class="text-left">` + songs[i].song_name + `</td>
     </tr>`
     )
   }
@@ -98,7 +100,7 @@ function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: 'UUUVi3BKLto'  ,
+    videoId: 'VYOjWnS4cMY',
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -111,7 +113,7 @@ var index = 0
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  event.target.playVideo();
+  // event.target.playVideo();
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -128,6 +130,7 @@ function onPlayerStateChange(event) {
       console.log(err);
     })           
     playNewVideo();
+    nowPlaying()
   }
 }
  
@@ -139,6 +142,15 @@ function playNewVideo(id){
     player.loadVideoById(songs[index].video_id)
     event.target.playVideo();
     playNewVideo(nextID)
+  })
+}
+
+function nowPlaying(){
+  $.get('/all/videos').then(function (r) {
+    var songs = r
+    $("#nowPlayingTable").html(`
+    <td><img src="` + songs[index].large_thumbnail_url + `"></td>
+    <td>` + songs[index].song_name + `</td>`)
   })
 }
 

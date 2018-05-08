@@ -39,12 +39,14 @@ router.post('/song/create', (req, res) => {
   // search for the song name submitted on front end
   search(req.body.songName, opts, function (err, results) {
     if (err) return console.log(err)
+
     // create the playlist
     db.Playlist.create({
       song_name: results[0].title,
       video_link: results[0].link,
       video_id: results[0].id,
       thumbnail_url: results[0].thumbnails.default.url,
+      large_thumbnail_url: results[0].thumbnails.medium.url,
       votes: 0
     }).then(function (data) {
       db.Playlist.findAll({}).then(function (r) {
