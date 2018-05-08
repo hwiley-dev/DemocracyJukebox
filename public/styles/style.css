@@ -36,3 +36,12 @@
 #plus {
   margin: 25px 37.5% 0 2.5%;
 }
+
+#songName {
+  margin: 5px;
+}
+
+.upvoteBtn, .downvoteBtn {
+  border: none;
+  background: none;
+}
