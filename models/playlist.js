@@ -1,4 +1,5 @@
 
+
 module.exports = function (sequelize, DataTypes) {
   var Playlist = sequelize.define('Playlist', {
     id: {
@@ -28,6 +29,7 @@ module.exports = function (sequelize, DataTypes) {
     thumbnail_url: {
       type: DataTypes.STRING
     }
+
   })
   return Playlist
 }
