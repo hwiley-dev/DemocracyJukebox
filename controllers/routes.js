@@ -11,6 +11,25 @@ var opts = {
   type: 'video'
 }
 var videoID
+
+router.put('/song/upvote/:id', function(req, res) {
+  console.log(req.params.id)
+  // db.Playlist.update({
+  //   where: {
+  //     id: null
+  //   }
+  // });
+})
+
+router.put('/song/downvote/:id', function(req, res) {
+  console.log(req.params.id)
+  // db.Playlist.update({
+  //   where: {
+  //     id: null
+  //   }
+  // });
+})
+
 // this route gets a song from the user and sends it to the db
 router.post('/song/create', (req, res) => {
   console.log(req.body)
@@ -23,15 +42,24 @@ router.post('/song/create', (req, res) => {
       song_name: results[0].title,
       video_link: results[0].link,
       video_id: results[0].id,
-      thumbnail_url: results[0].thumbnails.default.url
+      thumbnail_url: results[0].thumbnails.default.url,
+      votes: 0
+    }).then(function(data){
+      db.Playlist.findAll({}).then(function (r) {
+        res.json(r)
+      })
     })
-    videoID = results[0].id
-    console.dir(results[0].id)
-    console.dir(results[0].link)
-    console.log(results)
-    console.dir(results[0].thumbnails.default.url)
+    .catch(function(err){
+      console.log(err);
+    })
+    // videoID = results[0].id
+    // console.dir(results[0].id)
+    // console.dir(results[0].link)
+    // console.dir(results[0].thumbnails.default.url)
+
+    // console.log(videoID)
   })
-  res.send(200)
+  
 })
 
 //added by Qdwag
