@@ -19,9 +19,9 @@ $('#sbmt').on('click', () => {
 
 function getSongs() {
   $.get('/all/videos').then(function (r) {
-    // console.log(r)
     var songs = r
     getTable(songs)
+    // console.log(r)
   })
     .catch(function (err) {
       console.log(err)
@@ -30,11 +30,10 @@ function getSongs() {
 
 getSongs()
 
-function getTable (songs) {
-  console.log(songs)
-
-  $('#songs').empty()
-
+function getTable(songs){
+  // console.log(songs)
+  $("#songs").empty()
+  
   function getVideos () {
     $.get('/all/videos').then(function (r) {
       for (var i = 0; i < r.length; i++) {
@@ -44,12 +43,10 @@ function getTable (songs) {
       }
     })
   }
-  // 2. This code loads the IFrame Player API code asynchronously.
-  var tag = document.createElement('script')
-
-  for (i = 0; i < songs.length; i++) {
-    var counter = i + 1
-    $('#songs').append(`
+  
+  for (i = 0; i < songs.length; i++){
+    var counter =i+1
+    $("#songs").append(`
     <tr>
     <th scope="row">` + counter + `</th>
     <td><button id="downvote" data-value="` + songs[i].id + `" class="btn btn-primary">-</button> ` + songs[i].votes + ` <button  id="upvote" data-value="` + songs[i].id + `" class="btn btn-primary">+</button></td>
@@ -59,7 +56,6 @@ function getTable (songs) {
     )
   }
 }
-
 
 $(document).on('click', '#upvote', function () {
   console.log('ping')
@@ -95,17 +91,14 @@ tag.src = 'https://www.youtube.com/iframe_api'
 var firstScriptTag = document.getElementsByTagName('script')[0]
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-
-
-
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player
-function onYouTubeIframeAPIReady (video) {
+function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: video,
+    videoId: 'UUUVi3BKLto'  ,
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -117,27 +110,27 @@ function onYouTubeIframeAPIReady (video) {
 var index = 0
 
 // 4. The API will call this function when the video player is ready.
-function onPlayerReady (event) {
-  event.target.playVideo()
+function onPlayerReady(event) {
+  event.target.playVideo();
 }
 
 // 5. The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
 //    the player should play for six seconds and then stop.
 var done = false;
-function onPlayerStateChange(event) {
-  // if (event.data == YT.PlayerState.PLAYING && !done) {
-  //   setTimeout(stopVideo, 6000)
-  //   done = true
-  // }
-
-  if(event.data === 0) { 
-    //choose the appropriate index from the video array
+function onPlayerStateChange(event) {        
+  if(event.data === 0) {
     index++
+    $.get('/next/videos').then(function (r) {
+      console.log(r)
+    })
+    .catch(function(err){
+      console.log(err);
+    })           
     playNewVideo();
   }
 }
-
+ 
 function playNewVideo(id){
   $.get('/all/videos').then(function (r) {
     var songs = r

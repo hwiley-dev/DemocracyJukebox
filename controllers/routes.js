@@ -65,14 +65,22 @@ router.post('/song/create', (req, res) => {
 
 
 router.get('/all/videos', function (req, res) {
-  console.log('ping')
   db.Playlist.findAll({}).then(function (r) {
     res.json(r)
   })
 })
 
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/views/index.html'))
+
+router.get('/next/videos', function (req, res) {
+  db.Playlist.findAll({
+    order: [['votes', 'DESC']]
+  }).then(function (r) {
+    res.json(r)
+  })
+})
+
+router.get('/', (req,res) => {
+  res.sendFile(path.join(__dirname, "../public/views/index.html"))
 })
 
 router.post('/vote/create', (req, res) => {
