@@ -16,7 +16,7 @@ app.use(bodyparser.json())
 app.use('/', router)
 
 // your code here...
-var force = { force: true};
+var force = { force: true };
 db.sequelize.sync().then(function () {
   // listening port
   app.listen(PORT, function (e) {
