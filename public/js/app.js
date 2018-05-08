@@ -1,3 +1,4 @@
+var $ = window.$
 
 $('#sbmt').on('click', () => {
   event.preventDefault()
@@ -11,6 +12,8 @@ $('#sbmt').on('click', () => {
     console.log(r)
     console.log('ping')
     getTable(r)
+
+    getVideos(r)
   })
 })
 
@@ -20,70 +23,90 @@ function getSongs() {
     var songs = r
     getTable(songs)
   })
-  .catch(function(err){
-    console.log(err);
-    
-  })
+    .catch(function (err) {
+      console.log(err)
+    })
 }
 
 getSongs()
 
-function getTable(songs){
+function getTable (songs) {
   console.log(songs)
-  $("#songs").empty()
-  
-  for (i = 0; i < songs.length; i++){
-    var counter =i+1
-    $("#songs").append(`
+
+  $('#songs').empty()
+
+  function getVideos () {
+    $.get('/all/videos').then(function (r) {
+      for (var i = 0; i < r.length; i++) {
+        console.log(r[i].video_id)
+        var songID = r[i].video_id
+        onYouTubeIframeAPIReady(songID)
+      }
+    })
+  }
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script')
+
+  for (i = 0; i < songs.length; i++) {
+    var counter = i + 1
+    $('#songs').append(`
     <tr>
     <th scope="row">` + counter + `</th>
-    <td><button id="downvote" data-value="`+songs[i].id+`" class="btn btn-primary">-</button> ` + songs[i].votes + ` <button  id="upvote" data-value="`+ songs[i].id +`" class="btn btn-primary">+</button></td>
+    <td><button id="downvote" data-value="` + songs[i].id + `" class="btn btn-primary">-</button> ` + songs[i].votes + ` <button  id="upvote" data-value="` + songs[i].id + `" class="btn btn-primary">+</button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
     <td>` + songs[i].song_name + `</td>
     </tr>`
-    )}
+    )
+  }
 }
 
 
-$(document).on('click', '#upvote', function(){
-    var voteID = $(this).attr("data-value")
-    // console.log(voteID)
-    // $.put('/song/upvote').then(function (r) {
-  // voting(voteID)
-  
-  // })
+$(document).on('click', '#upvote', function () {
+  console.log('ping')
+  var voteID = $(this).attr('data-value')
+  console.log(voteID)
+  $.ajax({
+    url: '/song/upvote/' + voteID,
+    type: 'PUT',
+    success: function(somethin) {
+      getSongs()
+      console.log(somethin)
+    }
+  })
 })
 
-$(document).on('click', '#downvote', function(){
-  var voteID = $(this).attr("data-value")
-  // console.log(voteID)
-
+$(document).on('click', '#downvote', function () {
+  console.log('ping')
+  var voteID = $(this).attr('data-value')
+  //console.log(voteID)
   $.ajax({
-    url: '/song/downvote/'+voteID,
+    url: '/song/downvote/' + voteID,
     type: 'PUT',
-    data: "name=John&location=Boston",
-    success: function(data) {
-      // alert('Load was performed.');
+    success: function (somethin) {
+      getSongs()
+      console.log(somethin)
     }
-  });
-  
+  })
 })
 
 // 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement('script');
+var tag = document.createElement('script')
 
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+tag.src = 'https://www.youtube.com/iframe_api'
+var firstScriptTag = document.getElementsByTagName('script')[0]
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+
+
+
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var player 
-function onYouTubeIframeAPIReady() {
+var player
+function onYouTubeIframeAPIReady (video) {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: '2YvG0NbYJpE',
+    videoId: video,
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -95,8 +118,8 @@ function onYouTubeIframeAPIReady() {
 var index = 0
 
 // 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
+function onPlayerReady (event) {
+  event.target.playVideo()
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -114,7 +137,6 @@ function onPlayerStateChange(event) {
     index++
     playNewVideo();
   }
-  
 }
 
 function playNewVideo(id){
