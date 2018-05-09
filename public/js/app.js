@@ -73,6 +73,8 @@ $(document).on('click', '#upvote', function () {
   })
 })
 
+
+
 $(document).on('click', '#downvote', function () {
   console.log('ping')
   var voteID = $(this).attr('data-value')
@@ -110,7 +112,7 @@ function onYouTubeIframeAPIReady () {
 }
 
 //create the index chosen from the video array
-var index = 0
+var index = -1
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
