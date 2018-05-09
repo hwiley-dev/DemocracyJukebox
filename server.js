@@ -17,7 +17,7 @@ app.use('/', router)
 
 // your code here...
 var force = { force: true };
-db.sequelize.sync().then(function () {
+db.sequelize.sync(force).then(function () {
   // listening port
   app.listen(PORT, function (e) {
     if (e) throw e
