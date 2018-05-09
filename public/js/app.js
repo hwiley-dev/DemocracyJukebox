@@ -1,6 +1,6 @@
 var $ = window.$
 
-$(document).ready(function(){
+$(document).ready(function () {
   updateList()
 })
 
@@ -63,36 +63,41 @@ function getTable (songs) {
   }
 }
 
+let voteCount = 3
+
 $(document).on('click', '#upvote', function () {
   console.log('ping')
   var voteID = $(this).attr('data-value')
   console.log(voteID)
-  $.ajax({
-    url: '/song/upvote/' + voteID,
-    type: 'PUT',
-    success: function (somethin) {
-      getSongs()
-      updateList()
-      console.log(somethin)
-    }
-  })
+  if (voteCount === 0) { alert('you only get 3 votes') } else {
+    $.ajax({
+      url: '/song/upvote/' + voteID,
+      type: 'PUT',
+      success: function (somethin) {
+        getSongs()
+        updateList()
+        console.log(somethin)
+      }
+    })
+    voteCount--
+  }
 })
-
-
 
 $(document).on('click', '#downvote', function () {
   console.log('ping')
   var voteID = $(this).attr('data-value')
-  // console.log(voteID)
-  $.ajax({
-    url: '/song/downvote/' + voteID,
-    type: 'PUT',
-    success: function(data) {
-      getSongs()
-      updateList()
-      console.log(data)
-    }
-  })
+  if (voteCount === 0) { alert('you only get 3 votes') } else {
+    $.ajax({
+      url: '/song/downvote/' + voteID,
+      type: 'PUT',
+      success: function (data) {
+        getSongs()
+        updateList()
+        console.log(data)
+      }
+    })
+    voteCount--
+  }
 })
 
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -117,12 +122,12 @@ function onYouTubeIframeAPIReady () {
   })
 }
 
-//create the index chosen from the video array
+// create the index chosen from the video array
 var index = -1
 
 // 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-  event.target.playVideo();
+function onPlayerReady (event) {
+  event.target.playVideo()
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -138,22 +143,23 @@ function onPlayerStateChange (event) {
       .catch(function (err) {
         console.log(err)
       })
+    voteCount = 3
     playNewVideo()
     nowPlaying()
+    
   }
 }
 
-function updateList() {
+function updateList () {
   $.get('/next/videos').then(function (r) {
     // console.log(r)
     var songs = r
 
-    $("#songs").empty()
-    for (i = 0; i < songs.length; i++){
-      var counter =i+1
+    $('#songs').empty()
+    for (i = 0; i < songs.length; i++) {
+      var counter = i + 1
 
-
-      $("#songs").append(`
+      $('#songs').append(`
       <tr>
       <th scope="row" class="align-middle">` + counter + `</th>
       <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
@@ -163,13 +169,13 @@ function updateList() {
       )
     }
   })
-  .catch(function(err){
-    console.log(err);
-  })          
+    .catch(function (err) {
+      console.log(err)
+    })
 }
 
-//next video has the most votes
-function playNewVideo(id){
+// next video has the most votes
+function playNewVideo (id) {
   $.get('/next/videos').then(function (r) {
     var songs = r
     console.log(songs)
@@ -181,7 +187,7 @@ function playNewVideo(id){
 }
 
 function nowPlaying () {
-  $.get('/all/videos').then(function (r) {
+  $.get('/next/videos').then(function (r) {
     var songs = r
     $('#nowPlayingTable').html(`
     <td><img src="` + songs[index].large_thumbnail_url + `"></td>
