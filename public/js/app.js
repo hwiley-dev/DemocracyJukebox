@@ -81,7 +81,8 @@ $(document).on('click', '#downvote', function () {
     url: '/song/downvote/' + voteID,
     type: 'PUT',
     success: function(data) {
-      // alert('Load was performed.');
+      getSongs()
+      console.log(data)
     }
   })
 })
