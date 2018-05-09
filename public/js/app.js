@@ -113,8 +113,13 @@ function onYouTubeIframeAPIReady () {
 var index = -1
 
 // 4. The API will call this function when the video player is ready.
+<<<<<<< HEAD
 function onPlayerReady (event) {
   // event.target.playVideo();
+=======
+function onPlayerReady(event) {
+  event.target.playVideo();
+>>>>>>> 4f98ee18ab26808c5c03fefb0ff0b2a00c714c95
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -134,9 +139,16 @@ function onPlayerStateChange (event) {
     nowPlaying()
   }
 }
+<<<<<<< HEAD
 
 function playNewVideo (id) {
   $.get('/all/videos').then(function (r) {
+=======
+ 
+//next video has the most votes
+function playNewVideo(id){
+  $.get('/next/videos').then(function (r) {
+>>>>>>> 4f98ee18ab26808c5c03fefb0ff0b2a00c714c95
     var songs = r
     console.log(songs)
     console.log(songs[index].video_id)
