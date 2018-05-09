@@ -1,5 +1,4 @@
 
-
 module.exports = function (sequelize, DataTypes) {
   var Playlist = sequelize.define('Playlist', {
     id: {
@@ -29,7 +28,7 @@ module.exports = function (sequelize, DataTypes) {
     thumbnail_url: {
       type: DataTypes.STRING
     },
-    large_thumbnail_url:{
+    large_thumbnail_url: {
       type: DataTypes.STRING
     }
 
