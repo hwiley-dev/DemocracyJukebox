@@ -11,16 +11,45 @@
     crossorigin="anonymous">
   <!-- stylesheet for buttons -->
   <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  <!-- fontawesome cdn -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <!-- vote button -->
+  <div class="main">
+
+<!-- Parallax Experiment... Muhahaha-->
+  <div class="keyart" id="parallax">
+    <div class="keyart_layer parallax" id="keyart-0" data-speed="2" style="transform: translate3d(0px, -9.7px, 0px)">
+    </div>	
+    
+    <!-- <div class="keyart_layer parallax" id="keyart-1" data-speed="5" style="transform: translate3d(0px, -24.25px, 0px)"></div> 
+    <div class="keyart_layer parallax" id="keyart-2" data-speed="11" style="transform: translate3d(0px, -53.35px, 0px)"></div>	
+    <div class="keyart_layer parallax" id="keyart-3" data-speed="16" style="transform: translate3d(0px, -77.6px, 0px)"></div>
+    <div class="keyart_layer parallax" id="keyart-4" data-speed="26" style="transform: translate3d(0px, -126.1px, 0px)"></div>	
+    <div class="keyart_layer parallax" id="keyart-5" data-speed="36" style="transform: translate3d(0px, -174.6px, 0px)"></div>
+    <div class="keyart_layer parallax" id="keyart-6" data-speed="49" style="transform: translate3d(0px, -237.65px, 0px)"></div>	
+    <div class="keyart_layer" id="keyart-scrim"></div>
+    <div class="keyart_layer parallax" id="keyart-7" data-speed="69" style="transform: translate3d(0px, -334.65px, 0px)"></div>
+    <div class="keyart_layer" id="keyart-8" data-speed="100"></div>  -->
+  </div>
 
 
-  <div class="container">
+  
+<!-- Added border, easy to remove if we don't like -->
+<div class="container-fluid" style="border-bottom-style: double; border-width: 5px; border-color: black; line-height: 2.5px; opacity: .35"></div>
+  <!-- End of Border -->
+    
+    <!-- Vote/Song-Input Container -->
+    <div class="container">
+  <div class="container" id="bg">
+
     <div class="row">
       <div class="col-md-6">
-        <h1>What do you want to hear?</h1>
+        <br>
+        <br>
+        <h1>Search for a song</h1>
         <!-- this will have the form -->
         <form class="form-inline">
           <div class="form-group">
@@ -29,53 +58,66 @@
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-default" id="sbmt">Submit</button>
+          </div>
         </form>
-        </div>
-        <div class="col-md-6"></div>
-      </div>
-
-      <div id="results" class="col-md-6">
-        <div class="row">
-          <div class="col-md-6">
-            <!-- this will have a list of songs -->
-            <h1>Songs</h1>
-          </div>
-          <div id="player"></div>
-          <div class="col-md-12">
-            <!-- <p class="button" id="minus">-</p>
-            <p id="count">0</p>
-            <p class="button" id="plus">+</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Votes</th>
-                <th scope="col">Thumbnail</th>
-                <th scope="col">Song Name</th>
-              </tr>
-            </thead>
-            <tbody id="songs">
-
+        
+        <div id="nowPlayingDiv">
+          <br>
+          <h3>Now Playing</h3>
+          
+          <table class="table">
+            <tbody id="nowPlayingTable">
+              <td><img src="https://i.ytimg.com/vi/VYOjWnS4cMY/mqdefault.jpg"></td>
+              <td>Childish Gambino - This Is America (Official Video)</td>
             </tbody>
           </table>
+          
+        </div>
+      </div>
+        
+      <div id="results" class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <br>
+              <br>
+              <div id="player"></div>
+              <div class="col-md-12">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
 
-    
-    <!-- jquery cdn -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-      crossorigin="anonymous"></script>
-    <!-- complete bootstrap js -->
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
+    <div class="container text-center">
+      <h1 class="text-left">Song List</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Votes</th>
+            <th scope="col">Thumbnail</th>
+            <th scope="col" class="text-left">Song Name</th>
+          </tr>
+        </thead>
+        <tbody id="songs">
+          
+        </tbody>
+      </table>
+
+      <!-- Making a scroll to top button -->
+      <!-- <div id="scrollUp" style="height: 25px; width: 25px; background-color: white"></div> -->
+
+    </div>
+  </div>
+
+  <!-- jquery cdn -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <!-- complete bootstrap js -->
+  <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./js/app.js"></script>
 </body>
 
 </html>

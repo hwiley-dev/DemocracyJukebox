@@ -1,4 +1,4 @@
--- Drops the burgerTown if it exists currently --
+-- Drops the jukeBox if it exists currently --
 DROP DATABASE IF EXISTS jukeBox;
--- Creates the burgerTown database --
+-- Creates the jukeBox database --
 CREATE DATABASE jukeBox;
