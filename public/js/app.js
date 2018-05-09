@@ -181,7 +181,7 @@ function playNewVideo(id){
 }
 
 function nowPlaying(){
-  $.get('/all/videos').then(function (r) {
+  $.get('/next/videos').then(function (r) {
     var songs = r
     $("#nowPlayingTable").html(`
     <td><img src="` + songs[index].large_thumbnail_url + `"></td>
