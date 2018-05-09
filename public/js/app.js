@@ -110,7 +110,7 @@ function onYouTubeIframeAPIReady () {
 }
 
 //create the index chosen from the video array
-var index = 0
+var index = -1
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
