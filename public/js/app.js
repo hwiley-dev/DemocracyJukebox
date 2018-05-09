@@ -80,9 +80,9 @@ $(document).on('click', '#downvote', function () {
   $.ajax({
     url: '/song/downvote/' + voteID,
     type: 'PUT',
-    success: function (somethin) {
+    success: function(data) {
       getSongs()
-      console.log(somethin)
+      console.log(data)
     }
   })
 })
@@ -109,8 +109,8 @@ function onYouTubeIframeAPIReady () {
   })
 }
 
-// create the index chosen from the video array
-var index = 0
+//create the index chosen from the video array
+var index = -1
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady (event) {
