@@ -80,9 +80,8 @@ $(document).on('click', '#downvote', function () {
   $.ajax({
     url: '/song/downvote/' + voteID,
     type: 'PUT',
-    success: function (somethin) {
-      getSongs()
-      console.log(somethin)
+    success: function(data) {
+      // alert('Load was performed.');
     }
   })
 })
