@@ -20,7 +20,7 @@ body {
 
 .parallax {
   /* The image used */
-  background-image: url('../views/images/music_parallax.png');
+  background-image: url('../views/images/music_parallax - Copy.png');
 
   /* Full height */
   height: 800px; 
@@ -121,4 +121,11 @@ body {
 body {
   /* background-image: url("brushed-alum-dark-1920x1080.png") */
   background-image: url("brushed-alum-dark.png")
+}
+
+.landingSpan {
+  font-size: 50px;
+  position: absolute;
+  top: 100px;
+  transform: translate3d(0px, -9.7px, 0px);
 }
