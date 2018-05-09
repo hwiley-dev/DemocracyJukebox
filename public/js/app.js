@@ -122,6 +122,7 @@ var index = -1
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
+  //comment this out while working on code
   event.target.playVideo();
 }
 
@@ -192,3 +193,9 @@ function nowPlaying(){
 function stopVideo() {
   player.stopVideo()
 }
+
+// Working on a scroll to top button
+// $("#scrollUp").on('click', (function() {
+//   $("html, body").animate({ scrollTop: 0 }, "slow");
+//   return false;
+// }))
