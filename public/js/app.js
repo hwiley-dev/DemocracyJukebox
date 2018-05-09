@@ -1,5 +1,9 @@
 var $ = window.$
 
+$(document).ready(function(){
+  updateList()
+})
+
 $('#sbmt').on('click', () => {
   event.preventDefault()
   var songName = $('#songName').val()
@@ -68,10 +72,13 @@ $(document).on('click', '#upvote', function () {
     type: 'PUT',
     success: function (somethin) {
       getSongs()
+      updateList()
       console.log(somethin)
     }
   })
 })
+
+
 
 $(document).on('click', '#downvote', function () {
   console.log('ping')
@@ -82,6 +89,7 @@ $(document).on('click', '#downvote', function () {
     type: 'PUT',
     success: function(data) {
       getSongs()
+      updateList()
       console.log(data)
     }
   })
@@ -134,7 +142,32 @@ function onPlayerStateChange (event) {
     nowPlaying()
   }
 }
- 
+
+function updateList() {
+  $.get('/next/videos').then(function (r) {
+    // console.log(r)
+    var songs = r
+
+    $("#songs").empty()
+    for (i = 0; i < songs.length; i++){
+      var counter =i+1
+
+
+      $("#songs").append(`
+      <tr>
+      <th scope="row" class="align-middle">` + counter + `</th>
+      <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
+      <td><img src="` + songs[i].thumbnail_url + `"></td>
+      <td class="text-left">` + songs[i].song_name + `</td>
+      </tr>`
+      )
+    }
+  })
+  .catch(function(err){
+    console.log(err);
+  })          
+}
+
 //next video has the most votes
 function playNewVideo(id){
   $.get('/next/videos').then(function (r) {
