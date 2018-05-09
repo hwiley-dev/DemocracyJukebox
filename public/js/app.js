@@ -114,7 +114,7 @@ var index = -1
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  // event.target.playVideo();
+  event.target.playVideo();
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -135,8 +135,9 @@ function onPlayerStateChange(event) {
   }
 }
  
+//next video has the most votes
 function playNewVideo(id){
-  $.get('/all/videos').then(function (r) {
+  $.get('/next/videos').then(function (r) {
     var songs = r
     console.log(songs)
     console.log(songs[index].video_id)
