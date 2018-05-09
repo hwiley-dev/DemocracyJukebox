@@ -63,13 +63,11 @@ router.post('/song/create', (req, res) => {
   })
 })
 
-
 router.get('/all/videos', function (req, res) {
   db.Playlist.findAll({}).then(function (r) {
     res.json(r)
   })
 })
-
 
 router.get('/next/videos', function (req, res) {
   db.Playlist.findAll({
@@ -79,8 +77,8 @@ router.get('/next/videos', function (req, res) {
   })
 })
 
-router.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, "../public/views/index.html"))
+router.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/views/index.html'))
 })
 
 router.post('/vote/create', (req, res) => {
@@ -92,7 +90,5 @@ router.post('/vote/create', (req, res) => {
 //   res.send(videoID)
 
 // })
-
-
 
 module.exports = router
