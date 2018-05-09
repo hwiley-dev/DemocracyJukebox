@@ -82,9 +82,9 @@ $(document).on('click', '#downvote', function () {
   $.ajax({
     url: '/song/downvote/' + voteID,
     type: 'PUT',
-    success: function (somethin) {
+    success: function(data) {
       getSongs()
-      console.log(somethin)
+      console.log(data)
     }
   })
 })
