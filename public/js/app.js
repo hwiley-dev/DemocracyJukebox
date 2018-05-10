@@ -115,6 +115,13 @@ function onYouTubeIframeAPIReady () {
     height: '390',
     width: '640',
     videoId: 'VYOjWnS4cMY',
+    playerVars: {
+      'controls': 0,
+      'disablekb': 1,
+      'iv_load_policy': 3,
+      'modestbranding': 1,
+      'rel': 0
+    },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -129,7 +136,6 @@ var index = -1
 
 function onPlayerReady (event) {
   event.target.playVideo()
-
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -148,7 +154,6 @@ function onPlayerStateChange (event) {
     voteCount = 3
     playNewVideo()
     nowPlaying()
-    
   }
 }
 
@@ -191,18 +196,31 @@ function playNewVideo (id) {
 function nowPlaying () {
   $.get('/next/videos').then(function (r) {
     var songs = r
+    console.log(r)
+    deletePlayingSong(r[0].id)
     $('#nowPlayingTable').html(`
-    <td><img src="` + songs[index].large_thumbnail_url + `"></td>
-    <td>` + songs[index].song_name + `</td>`)
+    <td><img src="` + songs[0].large_thumbnail_url + `"></td>
+    <td>` + songs[0].song_name + `</td>`)
+
   })
 }
+
 
 function stopVideo () {
   player.stopVideo()
 }
 
-// Working on a scroll to top button
-// $("#scrollUp").on('click', (function() {
-//   $("html, body").animate({ scrollTop: 0 }, "slow");
-//   return false;
-// }))
+
+function deletePlayingSong (id) {
+  // console.log('Inside deletePlaingSong function, the song ID is :'+id)
+  $.ajax({
+    url: '/song/' + id,
+    type: 'DELETE',
+    success: function (result) {
+      // Do something with the result
+      console.log('This should be removed from the database' + result)
+      voteCount = 3
+      updateList()
+    }
+  })
+}

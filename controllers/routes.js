@@ -87,10 +87,15 @@ router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-// router.get('/song', (req, res) => {
-//   //returning data from database
-//   res.send(videoID)
-
-// })
+router.delete('/song/:id', (req, res) => {
+  console.log('delete route console log :' + req.params.id)
+  db.Playlist.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function () {
+    res.send(req.body.data)
+  })
+})
 
 module.exports = router
