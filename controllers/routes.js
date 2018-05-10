@@ -87,10 +87,35 @@ router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-// router.get('/song', (req, res) => {
-//   //returning data from database
-//   res.send(videoID)
-
+// router.post('/admin/create', (req, res) => {
+//   db.Admin.create({name: 'admin', password: 'password'}).then(function (data) {
+//     db.Admin.findAll({}).then(function(r){
+//       res.json(r)
+//     })
+//   })
+//   console.log(req.body)
 // })
+  
+//admin credentials
+router.get('/admin/creds', function (req, res) {
+  db.Admin.findAll({}).then(function (r) {
+    console.log(r)
+    res.json(r)
+  })
+})
+
+//delete songs
+router.delete('/song/:id', (req, res) => {
+  console.log('delete route console log :' + req.params.id)
+  db.Playlist.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function () {
+    res.send(req.body.data)
+  })
+})
+
 
 module.exports = router
+  
