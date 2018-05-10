@@ -115,13 +115,13 @@ function onYouTubeIframeAPIReady () {
     height: '390',
     width: '640',
     videoId: 'VYOjWnS4cMY',
-    playerVars: {
-      'controls': 0,
-      'disablekb': 1,
-      'iv_load_policy': 3,
-      'modestbranding': 1,
-      'rel': 0
-    },
+    // playerVars: {
+    //   'controls': 0,
+    //   'disablekb': 1,
+    //   'iv_load_policy': 3,
+    //   'modestbranding': 1,
+    //   'rel': 0
+    // },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -182,12 +182,11 @@ function updateList () {
 }
 
 // next video has the most votes
-function playNewVideo (id) {
-  $.get('/next/videos').then(function (r) {
-    var songs = r
+function playNewVideo () {
+  $.get('/next/videos').then(function (songs) {
     console.log(songs)
-    console.log(songs[index].video_id)
-    player.loadVideoById(songs[index].video_id)
+    console.log(songs[0].video_id)
+    player.loadVideoById(songs[0].video_id)
     event.target.playVideo()
     playNewVideo(nextID)
   })
