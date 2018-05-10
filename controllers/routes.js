@@ -65,13 +65,11 @@ router.post('/song/create', (req, res) => {
   })
 })
 
-
 router.get('/all/videos', function (req, res) {
   db.Playlist.findAll({}).then(function (r) {
     res.json(r)
   })
 })
-
 
 router.get('/next/videos', function (req, res) {
   db.Playlist.findAll({
@@ -81,22 +79,18 @@ router.get('/next/videos', function (req, res) {
   })
 })
 
-router.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, "../public/views/index.html"))
+router.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/views/index.html'))
 })
 
 router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-
-
 // router.get('/song', (req, res) => {
 //   //returning data from database
 //   res.send(videoID)
 
 // })
-
-
 
 module.exports = router
