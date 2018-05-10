@@ -87,10 +87,12 @@ router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-// router.get('/song', (req, res) => {
-//   //returning data from database
-//   res.send(videoID)
+db.Admin.create({name: 'admin', password: 'password'})
 
-// })
+router.get('/admin/creds', function (req, res) {
+  db.Admin.findAll({}).then(function (r) {
+    res.json(r)
+  })
+})
 
 module.exports = router

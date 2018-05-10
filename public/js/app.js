@@ -148,7 +148,6 @@ function onPlayerStateChange (event) {
     voteCount = 3
     playNewVideo()
     nowPlaying()
-    
   }
 }
 
@@ -200,6 +199,14 @@ function nowPlaying () {
 function stopVideo () {
   player.stopVideo()
 }
+
+//admin login
+$('#admin').on('click', () => {
+  $.get('/admin/creds').then(function(r){
+    var keys = r
+    console.log(keys)
+  })
+})
 
 // Working on a scroll to top button
 // $("#scrollUp").on('click', (function() {

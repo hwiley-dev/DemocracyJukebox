@@ -11,7 +11,10 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [2]
       }
-    }
+    },
+    password: {type:DataTypes.STRING}
   })
   return Admin
 }
+
+
