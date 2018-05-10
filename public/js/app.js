@@ -202,9 +202,21 @@ function stopVideo () {
 
 //admin login
 $('#admin').on('click', () => {
+  event.preventDefault()
+  var nameFront = $("#name").val()
+  var pwFront = $("#pw").val()
+  console.log(name)
+  console.log(pw)
   $.get('/admin/creds').then(function(r){
     var keys = r
-    console.log(keys)
+    console.log(keys[0].name)
+    var nameBack = keys[0].name
+    console.log(keys[0].password)
+    var pwBack = keys[0].password
+    if(nameFront === nameBack && pwFront === pwBack){
+      $("#admin").append("<h1>Hoorah</h1>")
+    }
+
   })
 })
 

@@ -5,15 +5,9 @@ module.exports = function (sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [2]
-      }
-    },
+    name: {type: DataTypes.STRING},
     password: {type:DataTypes.STRING}
-  })
+  })  
   return Admin
 }
 

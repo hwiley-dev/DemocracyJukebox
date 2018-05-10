@@ -87,10 +87,19 @@ router.post('/vote/create', (req, res) => {
   console.log(req.body)
 })
 
-db.Admin.create({name: 'admin', password: 'password'})
+// router.post('/admin/create', (req, res) => {
+//   db.Admin.create({name: 'admin', password: 'password'}).then(function (data) {
+//     db.Admin.findAll({}).then(function(r){
+//       res.json(r)
+//     })
+//   })
+//   console.log(req.body)
+// })
+  
 
 router.get('/admin/creds', function (req, res) {
   db.Admin.findAll({}).then(function (r) {
+    console.log(r)
     res.json(r)
   })
 })
