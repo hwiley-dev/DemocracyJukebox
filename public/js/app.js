@@ -194,7 +194,7 @@ function nowPlaying () {
     $('#nowPlayingTable').html(`
     <td><img src="` + songs[index].large_thumbnail_url + `"></td>
     <td>` + songs[index].song_name + `</td>`)
-  })
+     })
 }
 
 function stopVideo () {
