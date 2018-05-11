@@ -8,6 +8,13 @@ body {
   background: rgba(117, 18, 0);
 
 }
+.tableName{
+  display: inline;
+}
+.voteCountDiv {
+  float: right;
+  padding-top:10px;
+}
 
 .dashed {border-style: dashed;}
 
