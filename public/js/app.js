@@ -65,9 +65,11 @@ function getTable (songs) {
     <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn bothVotes"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn bothVotes"><i class="fas fa-arrow-down"></i></button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
     <td class="text-left">` + songs[i].song_name + `</td>
-    <td class="deleteBtn">X</td>
+    <td><button class="deleteBtn btn btn-danger" + data-value="` + songs[i].id + `">X</button></td>
     </tr>`
     )
+    //hide delete buttons until admin logs in 
+    $(".deleteBtn").hide()
   }
 }
 
@@ -142,7 +144,7 @@ var index = -1
 // 4. The API will call this function when the video player is ready.
 
 function onPlayerReady (event) {
-  event.target.playVideo()
+  //event.target.playVideo()
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -180,9 +182,10 @@ function updateList () {
       <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
       <td><img src="` + songs[i].thumbnail_url + `"></td>
       <td class="text-left">` + songs[i].song_name + `</td>
-      <td class="deleteBtn">X</td>
+      <td><button class="deleteBtn btn btn-danger" data-value="` + songs[i].id + `">X</button></td>
       </tr>`
       )
+      $(".deleteBtn").hide()
     }
   })
     .catch(function (err) {
@@ -245,13 +248,14 @@ $('#admin').on('click', () => {
     console.log(keys[0].password)
     var pwBack = keys[0].password
     if(nameFront === nameBack && pwFront === pwBack){
-      $("#admin").append("<h1>Hoorah</h1>")
+      //show delete buttons once admin logs in
+      $(".deleteBtn").show()
       $(".deleteBtn").on("click", function(){
+        //upon click of delete button, remove selected song from db
         $.ajax({
-          url: '/song/' + id,
+          url: '/song/' + $(this).attr("data-value"),
           type: 'DELETE',
           success: function (result) {
-            console.log('test')
             updateList()
           }
           
