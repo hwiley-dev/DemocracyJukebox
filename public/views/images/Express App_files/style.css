@@ -8,13 +8,6 @@ body {
   background: rgba(117, 18, 0);
 
 }
-.tableName{
-  display: inline;
-}
-.voteCountDiv {
-  float: right;
-  padding-top:10px;
-}
 
 .dashed {border-style: dashed;}
 
@@ -24,12 +17,9 @@ body {
   height: 100%;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
-#logoName {
-  margin-top: 20px;
-}
+
 
 #logoContainer {
-  height: 500px;
   left: 45%;
   text-align: center;
 
@@ -42,8 +32,12 @@ body {
 }
 
 
+#logoName {
+position: absolute;
+top: 70%;
+left: 40%;
 
-
+}
 #keyart-0 {
   /* The image used */
   background-image: url('../views/images/skyline.png');
@@ -52,7 +46,13 @@ body {
   padding-top: 150px;
   /* position: absolute; */
   /* top: 100px; */
-    
+    animation-name: slideUp;
+    -webkit-animation-name: slideUp;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+
+  
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;

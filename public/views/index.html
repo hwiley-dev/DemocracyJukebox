@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>jukeBocracy</title>
+  <title>JukeBocracy</title>
   <!-- complete bootstrap css -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
     crossorigin="anonymous">
@@ -19,10 +19,15 @@
 <body>
   <div class="main">
 
-<!-- Parallax Experiment... Muhahaha-->
-  <div class="keyart" id="parallax">
-    <div class="keyart_layer parallax" id="keyart-0" data-speed="2" style="transform: translate3d(0px, -9.7px, 0px)">
-    </div>	
+
+<div class="keyart" id="parallax">
+  <div class="keyart_layer parallax" id="keyart-0" data-speed="2" style="transform: translate3d(0px, -9.7px, 0px)">
+  
+    <div id="logoContainer">
+      <img src="../views/images/youtube_logo.png" id="ytLogo">
+      <h1 id="logoName">Jukebocracy!</h1>
+    </div>
+  </div>	
     <div class="container-fluid">
       <form class="form-inline">
           <div class="form_group">
@@ -34,18 +39,12 @@
           </div>
       </form> 
       
-    </div>
-    <!-- <div class="keyart_layer parallax" id="keyart-1" data-speed="5" style="transform: translate3d(0px, -24.25px, 0px)"></div> 
-    <div class="keyart_layer parallax" id="keyart-2" data-speed="11" style="transform: translate3d(0px, -53.35px, 0px)"></div>	
-    <div class="keyart_layer parallax" id="keyart-3" data-speed="16" style="transform: translate3d(0px, -77.6px, 0px)"></div>
-    <div class="keyart_layer parallax" id="keyart-4" data-speed="26" style="transform: translate3d(0px, -126.1px, 0px)"></div>	
-    <div class="keyart_layer parallax" id="keyart-5" data-speed="36" style="transform: translate3d(0px, -174.6px, 0px)"></div>
-    <div class="keyart_layer parallax" id="keyart-6" data-speed="49" style="transform: translate3d(0px, -237.65px, 0px)"></div>	
-    <div class="keyart_layer" id="keyart-scrim"></div>
-    <div class="keyart_layer parallax" id="keyart-7" data-speed="69" style="transform: translate3d(0px, -334.65px, 0px)"></div>
-    <div class="keyart_layer" id="keyart-8" data-speed="100"></div>  -->
-  </div>
+ </div>
+   
 
+
+
+  <!-- vote button -->
 
   
 <!-- Added border, easy to remove if we don't like -->
@@ -53,7 +52,7 @@
   <!-- End of Border -->
     
     <!-- Vote/Song-Input Container -->
-    <div class="container">
+<div class="container">
   <div class="container" id="bg">
 
     <div class="row">
@@ -99,10 +98,12 @@
         </div>
       </div>
     </div>
+    
+    <br>
 
-    <div class="container text-center">
-      <h1 class="text-left">Song List</h1>
-      <table class="table">
+    <div class="container">
+      <h1 class="text-left tableName">Song List</h1> <h3 class="voteCountDiv"></h3>
+      <table class="table  text-center">
         <thead>
           <tr>
             <th scope="col">#</th>
