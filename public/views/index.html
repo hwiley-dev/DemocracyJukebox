@@ -17,82 +17,89 @@
 </head>
 
 <body>
-
-
   <div class="main">
-    <div id="logoContainer">
-      <img src="../views/images/youtube_logo.png" id="ytLogo">
-      <h1 id="logoName">Jukebocracy!</h1>
-    </div>
+    
+    
     <div class="keyart" id="parallax">
       <div class="keyart_layer parallax" id="keyart-0" data-speed="2" style="transform: translate3d(0px, -9.7px, 0px)">
-      </div>
-    </div>
-  </div>	
-
-<div class='mainPageWrapper'>
-    <div class="container-fluid loginPanel">
+        
+        <div id="logoContainer">
+          <img src="../views/images/youtube_logo.png" id="ytLogo">
+          <h1 id="logoName">Jukebocracy!</h1>
+        </div>
+      </div>	
+      <div class="container-fluid" style="border-bottom-style: double; border-width: 5px; border-color: black; line-height: 2.5px; opacity: .35"></div>
+    <div class="container-fluid">
       <form class="form-inline">
           <div class="form_group">
-            <h4>Admin Login</h4>
+           <h4>Admin Login</h4>
             <label for='name'>Name: </label>
             <input class="form-control" type="text" id='name' name='name'>
             <label for='pw'>Password: </label> 
             <input class="form-control" type="text" id='pw' name='pw'><button class="btn btn-default" id="admin" style="margin-left: 3px">Login</button>
           </div>
       </form> 
-    </div>
-  
-    <!-- Added border, easy to remove if we don't like -->
-  <!-- <div class="container-fluid" style="border-bottom-style: double; border-width: 5px; border-color: black; line-height: 2.5px; opacity: .35"></div> -->
-    <!-- End of Border -->
       
-      <!-- Vote/Song-Input Container -->
+ </div>
+   
 
-  <div class="container mainPagePanel">    
-    <div class="container" id="bg">
-      <div class="row">
-        <div class="col-md-6">
-          <br> 
+
+
+  <!-- vote button testing1234-->
+
+  
+<!-- Added border, easy to remove if we don't like -->
+<div class="container-fluid" style="border-top-style: double; border-width: 5px; border-color: black; line-height: 2.5px; opacity: .35"></div>    
+    <!-- Vote/Song-Input Container -->
+<div class="container">
+  <div class="container" id="bg">
+
+    <div class="row">
+      <div class="col-md-6">
+        <br> 
+        <br>
+        <h1>Search for a song</h1>
+        <!-- this will have the form -->
+        <form class="form-inline">
+          <div class="form-group">
+            <label>Song Name</label>
+            <input class="form-control" id="songName">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-default" id="sbmt">Submit</button>
+          </div>
+        </form>
+        
+        <div id="nowPlayingDiv">
           <br>
-
-          <h1>Search for a song</h1>
-          <!-- this will have the form -->
-          <form class="form-inline">
-            <div class="form-group">
-              <label>Song Name</label>
-              <input class="form-control" id="songName">
-            </div>
-            <div class="form-group">
-              <button type="submit" class="btn btn-default" id="sbmt">Submit</button>
-            </div>
-          </form>
           <h3>Now Playing</h3>
+          
           <table class="table">
             <tbody id="nowPlayingTable">
               <td><img src="https://i.ytimg.com/vi/76O3w4pt0CA/mqdefault.jpg"></td>
               <td>Miguel - Sky Walker (Official Video) ft. Travis Scott</td>
             </tbody>
           </table>
-          </div>
-        </div>
           
-        <div id="results" class="col-md-6">
-            <div class="row">
-              <div class="col-md-6">
-                <br>
-                <br>
-                <div id="player"></div>
-                <div class="col-md-12">
-                </div>
+        </div>
+      </div>
+        
+      <div id="results" class="col-md-6">
+          <div class="row">
+            <div class="col-md-6">
+              <br>
+              <br>
+              <div id="player"></div>
+              <div class="col-md-12">
               </div>
             </div>
           </div>
         </div>
-      </div>      
-      <br>
+      </div>
     </div>
+    
     <br>
+
     <div class="container">
       <h1 class="text-left tableName">Song List</h1> <h3 class="voteCountDiv"></h3>
       <table class="table  text-center">
@@ -106,15 +113,16 @@
           </tr>
         </thead>
         <tbody id="songs">
+          
         </tbody>
       </table>
 
+      <!-- Making a scroll to top button -->
+      <!-- <div id="scrollUp" style="height: 25px; width: 25px; background-color: white"></div> -->
 
-        <!-- Making a scroll to top button -->
-        <!-- <div id="scrollUp" style="height: 25px; width: 25px; background-color: white"></div> -->
-      </div>
     </div>
   </div>
+
   <!-- jquery cdn -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
