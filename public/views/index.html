@@ -18,6 +18,7 @@
 
 <body>
 
+
   <div class="main">
     <div id="logoContainer">
       <img src="../views/images/youtube_logo.png" id="ytLogo">
@@ -48,15 +49,13 @@
       
       <!-- Vote/Song-Input Container -->
 
-  <div class="container mainPagePanel">
-
-    
+  <div class="container mainPagePanel">    
     <div class="container" id="bg">
-
       <div class="row">
         <div class="col-md-6">
           <br> 
           <br>
+
           <h1>Search for a song</h1>
           <!-- this will have the form -->
           <form class="form-inline">
@@ -68,18 +67,13 @@
               <button type="submit" class="btn btn-default" id="sbmt">Submit</button>
             </div>
           </form>
-          
-          <div id="nowPlayingDiv">
-            <br>
-            <h3>Now Playing</h3>
-            
-            <table class="table">
-              <tbody id="nowPlayingTable">
-                <td><img src="https://i.ytimg.com/vi/VYOjWnS4cMY/mqdefault.jpg"></td>
-                <td>Childish Gambino - This Is America (Official Video)</td>
-              </tbody>
-            </table>
-            
+          <h3>Now Playing</h3>
+          <table class="table">
+            <tbody id="nowPlayingTable">
+              <td><img src="https://i.ytimg.com/vi/76O3w4pt0CA/mqdefault.jpg"></td>
+              <td>Miguel - Sky Walker (Official Video) ft. Travis Scott</td>
+            </tbody>
+          </table>
           </div>
         </div>
           
@@ -95,25 +89,26 @@
             </div>
           </div>
         </div>
-      </div>
-      
+      </div>      
       <br>
+    </div>
+    <br>
+    <div class="container">
+      <h1 class="text-left tableName">Song List</h1> <h3 class="voteCountDiv"></h3>
+      <table class="table  text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Votes</th>
+            <th scope="col">Thumbnail</th>
+            <th scope="col" class="text-left">Song Name</th>
+            <th scope="col">Delete Song</th>
+          </tr>
+        </thead>
+        <tbody id="songs">
+        </tbody>
+      </table>
 
-      <div class="container">
-        <h1 class="text-left tableName">Song List</h1> <h4 class="voteCountDiv"></h4>
-        <table class="table  text-center">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Votes</th>
-              <th scope="col">Thumbnail</th>
-              <th scope="col" class="text-left">Song Name</th>
-            </tr>
-          </thead>
-          <tbody id="songs">
-            
-          </tbody>
-        </table>
 
         <!-- Making a scroll to top button -->
         <!-- <div id="scrollUp" style="height: 25px; width: 25px; background-color: white"></div> -->

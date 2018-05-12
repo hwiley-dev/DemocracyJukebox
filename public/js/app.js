@@ -65,8 +65,11 @@ function getTable (songs) {
     <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn bothVotes"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn bothVotes"><i class="fas fa-arrow-down"></i></button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
     <td class="text-left">` + songs[i].song_name + `</td>
+    <td><button class="deleteBtn btn btn-danger" + data-value="` + songs[i].id + `">Delete</button></td>
     </tr>`
     )
+    //hide delete buttons until admin logs in 
+    $(".deleteBtn").hide()
   }
 }
 
@@ -120,7 +123,7 @@ function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: 'VYOjWnS4cMY',
+    videoId: '76O3w4pt0CA',
     // playerVars: {
     //   'controls': 0,
     //   'disablekb': 1,
@@ -179,8 +182,10 @@ function updateList () {
       <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
       <td><img src="` + songs[i].thumbnail_url + `"></td>
       <td class="text-left">` + songs[i].song_name + `</td>
+      <td><button class="deleteBtn btn btn-danger" data-value="` + songs[i].id + `">Delete</button></td>
       </tr>`
       )
+      $(".deleteBtn").hide()
     }
   })
     .catch(function (err) {
@@ -243,7 +248,20 @@ $('#admin').on('click', () => {
     console.log(keys[0].password)
     var pwBack = keys[0].password
     if(nameFront === nameBack && pwFront === pwBack){
-      $("#admin").append("<h1>Hoorah</h1>")
+      //show delete buttons once admin logs in
+      $(".deleteBtn").show()
+      $(".deleteBtn").on("click", function(){
+        //upon click of delete button, remove selected song from db
+        $.ajax({
+          url: '/song/' + $(this).attr("data-value"),
+          type: 'DELETE',
+          success: function (result) {
+            updateList()
+          }
+          
+        })
+      })
+
     }
 
   })
