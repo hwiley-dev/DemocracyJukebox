@@ -65,7 +65,7 @@ function getTable (songs) {
     <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn bothVotes"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn bothVotes"><i class="fas fa-arrow-down"></i></button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
     <td class="text-left">` + songs[i].song_name + `</td>
-    <td class="deleteBtn">X</td>
+    <td><button class="deleteBtn` + songs[i].id + `">X</button></td>
     </tr>`
     )
   }
@@ -121,7 +121,7 @@ function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: 'VYOjWnS4cMY',
+    videoId: '76O3w4pt0CA',
     // playerVars: {
     //   'controls': 0,
     //   'disablekb': 1,
@@ -142,7 +142,8 @@ var index = -1
 // 4. The API will call this function when the video player is ready.
 
 function onPlayerReady (event) {
-  event.target.playVideo()
+  // comment this line out when testing code
+  // event.target.playVideo()
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -180,7 +181,7 @@ function updateList () {
       <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
       <td><img src="` + songs[i].thumbnail_url + `"></td>
       <td class="text-left">` + songs[i].song_name + `</td>
-      <td class="deleteBtn">X</td>
+      <td><button class="deleteBtn` + songs[i].id + `">X</button></td>
       </tr>`
       )
     }
@@ -246,18 +247,6 @@ $('#admin').on('click', () => {
     var pwBack = keys[0].password
     if(nameFront === nameBack && pwFront === pwBack){
       $("#admin").append("<h1>Hoorah</h1>")
-      $(".deleteBtn").on("click", function(){
-        $.ajax({
-          url: '/song/' + id,
-          type: 'DELETE',
-          success: function (result) {
-            console.log('test')
-            updateList()
-          }
-          
-        })
-      })
-
     }
 
   })
