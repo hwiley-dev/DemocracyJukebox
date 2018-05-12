@@ -65,6 +65,7 @@ function getTable (songs) {
     <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn bothVotes"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn bothVotes"><i class="fas fa-arrow-down"></i></button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
     <td class="text-left">` + songs[i].song_name + `</td>
+    <td class="deleteBtn">X</td>
     </tr>`
     )
   }
@@ -179,6 +180,7 @@ function updateList () {
       <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
       <td><img src="` + songs[i].thumbnail_url + `"></td>
       <td class="text-left">` + songs[i].song_name + `</td>
+      <td class="deleteBtn">X</td>
       </tr>`
       )
     }
@@ -244,6 +246,18 @@ $('#admin').on('click', () => {
     var pwBack = keys[0].password
     if(nameFront === nameBack && pwFront === pwBack){
       $("#admin").append("<h1>Hoorah</h1>")
+      $(".deleteBtn").on("click", function(){
+        $.ajax({
+          url: '/song/' + id,
+          type: 'DELETE',
+          success: function (result) {
+            console.log('test')
+            updateList()
+          }
+          
+        })
+      })
+
     }
 
   })
