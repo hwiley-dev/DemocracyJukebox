@@ -21,5 +21,7 @@ db.sequelize.sync().then(function () {
   // listening port
   app.listen(PORT, function (e) {
     if (e) throw e
+    console.log('http://localhost:3000')
   })
 })
+
