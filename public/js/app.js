@@ -115,6 +115,13 @@ function onYouTubeIframeAPIReady () {
     height: '390',
     width: '640',
     videoId: 'VYOjWnS4cMY',
+    playerVars: {
+      'controls': 0,
+      'disablekb': 1,
+      'iv_load_policy': 3,
+      // 'modestbranding': 1,
+      'rel': 0
+    },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
