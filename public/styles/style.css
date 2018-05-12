@@ -1,9 +1,8 @@
 body, html {
   height: 100%;
   color: whitesmoke;
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! *//* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
-/* this is for the up and down buttons */
+
 body {
   background: rgba(117, 18, 0);
 
@@ -22,7 +21,6 @@ body {
 .main {
   background: rgba(117, 18, 0, .1);
   height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 #logoName {
   margin-top: 20px;
@@ -40,9 +38,6 @@ body {
   opacity: .9;
 
 }
-
-
-
 
 #keyart-0 {
   /* The image used */
@@ -165,7 +160,7 @@ body {
 
 body {
   /* background-image: url("brushed-alum-dark-1920x1080.png") */
-  background-image: url("brushed-alum-dark.png")
+  background-image: url("../views/images/brushed-alum-dark.png")
 }
 
 .landingSpan {

@@ -65,7 +65,7 @@ function getTable (songs) {
     <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn bothVotes"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn bothVotes"><i class="fas fa-arrow-down"></i></button></td>
     <td><img src="` + songs[i].thumbnail_url + `"></td>
     <td class="text-left">` + songs[i].song_name + `</td>
-    <td><button class="deleteBtn btn btn-danger" + data-value="` + songs[i].id + `">X</button></td>
+    <td><button class="deleteBtn btn btn-danger" + data-value="` + songs[i].id + `">Delete</button></td>
     </tr>`
     )
     //hide delete buttons until admin logs in 
@@ -123,14 +123,14 @@ function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: 'VYOjWnS4cMY',
-    playerVars: {
-      'controls': 0,
-      'disablekb': 1,
-      'iv_load_policy': 3,
-      'modestbranding': 1,
-      'rel': 0
-    },
+    videoId: '76O3w4pt0CA',
+    // playerVars: {
+    //   'controls': 0,
+    //   'disablekb': 1,
+    //   'iv_load_policy': 3,
+    //   'modestbranding': 1,
+    //   'rel': 0
+    // },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -144,7 +144,7 @@ var index = -1
 // 4. The API will call this function when the video player is ready.
 
 function onPlayerReady (event) {
-  //event.target.playVideo()
+  event.target.playVideo()
 }
 
 // 5. The API calls this function when the player's state changes.
@@ -182,7 +182,7 @@ function updateList () {
       <td><button  id="upvote" data-value="` + songs[i].id + `" class="upvoteBtn"><i class="fas fa-arrow-up"></i></button><br> <span class="">` + songs[i].votes + `</span> <br><button id="downvote" data-value="` + songs[i].id + `" class="downvoteBtn"><i class="fas fa-arrow-down"></i></button></td>
       <td><img src="` + songs[i].thumbnail_url + `"></td>
       <td class="text-left">` + songs[i].song_name + `</td>
-      <td><button class="deleteBtn btn btn-danger" data-value="` + songs[i].id + `">X</button></td>
+      <td><button class="deleteBtn btn btn-danger" data-value="` + songs[i].id + `">Delete</button></td>
       </tr>`
       )
       $(".deleteBtn").hide()
