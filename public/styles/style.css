@@ -6,7 +6,6 @@ body, html {
 /* this is for the up and down buttons */
 body {
   background: rgba(117, 18, 0);
-
 }
 .tableName{
   display: inline;
@@ -16,13 +15,15 @@ body {
   padding-top:10px;
 }
 .loginPanel{
+  margin-top: -10;
+  padding-top: 25px;
   z-index: 3;
   position: relative;
 }
 .mainPageWrapper{
   z-index: 4;
   position: relative;
-  background-color: 1d0666;
+  background-color: #262626;
 }
 .dashed {border-style: dashed;}
 
