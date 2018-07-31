@@ -15,7 +15,7 @@ app.use(bodyparser.urlencoded({ extended: true }))
 app.use(bodyparser.json())
 app.use('/', router)
 
-// your code here...
+// listening...
 var force = { force: true }
 db.sequelize.sync().then(function () {
   // listening port
