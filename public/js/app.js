@@ -1,13 +1,18 @@
 var $ = window.$
 let voteCount = 3
 
+/*
+  * @desc Once doc finishes load, display voteCount and update song list
+*/
 $(document).ready(function () {
   updateList()
-  //initially display the vote count to the user
   displayVoteCount()
 })
 
-//handles user submission of song name search and passes to routes.js
+/*
+  * @desc handles user submission of song name search and passes to routes.js
+  * TODO: add more precise search control & handle for 
+*/
 $('#sbmt').on('click', () => {
   event.preventDefault()
   var songName = $('#songName').val()
@@ -16,35 +21,42 @@ $('#sbmt').on('click', () => {
   }
   $('#songName').val('')
 
+  // Pass in POST response to getTable() and getVideos()
   $.post('/song/create', data).then(function (r) {
     console.log(r)
     console.log('ping')
     getTable(r)
-
     getVideos(r)
   })
 })
 
-//prints out the number of votes left to the user
+/* 
+  * @desc prints out the number of votes left to the user
+
+*/
 function displayVoteCount() {
   $('.voteCountDiv').html('Votes Left : '+ voteCount)
 }
 
+/*
+  * @desc AJAX GET
+*/
 function getSongs () {
   $.get('/all/videos').then(function (r) {
     var songs = r
     getTable(songs)
-    // console.log(r)
+    
   })
-    .catch(function (err) {
+    .catch(function (err) { 
       console.log(err)
     })
 }
 
 getSongs()
 
+
+
 function getTable (songs) {
-  // console.log(songs)
   $('#songs').empty()
 
   function getVideos () {
@@ -68,22 +80,28 @@ function getTable (songs) {
     <td><button class="deleteBtn btn btn-danger" + data-value="` + songs[i].id + `">Delete</button></td>
     </tr>`
     )
-    //hide delete buttons until admin logs in 
+    // Hide delete buttons until admin logs in using jQuery hide() method
     $(".deleteBtn").hide()
   }
 }
 
-//handles user voting on each song in the tableList, the variable voteCount is declared globally in line 2
+/* 
+  * @desc AJAX PUT request 
+      * handles upvote
+      * subtracts remaining user votes
+      * updates list
+*/
 $(document).on('click', '#upvote', function () {
   var voteID = $(this).attr('data-value')
-  if (voteCount === 0) { alert('You are out of Votes! Please wait until the song is finished.') } else {
+  if (voteCount === 0) { alert('You are out of Votes! Please wait until the song is finished.') } 
+  else {
     $.ajax({
       url: '/song/upvote/' + voteID,
       type: 'PUT',
       success: function (somethin) {
         getSongs()
         updateList()
-        console.log(somethin)
+        console.log('this log is ' + somethin)
       }
     })
     voteCount--
@@ -91,6 +109,12 @@ $(document).on('click', '#upvote', function () {
   }
 })
 
+/* 
+  * @desc AJAX PUT request 
+      * handles downvote
+      * subtracts remaining user votes
+      * updates list
+*/
 $(document).on('click', '#downvote', function () {
   console.log('ping')
   var voteID = $(this).attr('data-value')
@@ -109,28 +133,22 @@ $(document).on('click', '#downvote', function () {
   }
 })
 
-// 2. This code loads the IFrame Player API code asynchronously.
+// Loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script')
 
 tag.src = 'https://www.youtube.com/iframe_api'
 var firstScriptTag = document.getElementsByTagName('script')[0]
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
+/*
+  * @desc Builds iframe player once API is run
+*/
 var player
 function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
     videoId: '76O3w4pt0CA',
-    // playerVars: {
-    //   'controls': 0,
-    //   'disablekb': 1,
-    //   'iv_load_policy': 3,
-    //   'modestbranding': 1,
-    //   'rel': 0
-    // },
     events: {
       'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
@@ -138,7 +156,7 @@ function onYouTubeIframeAPIReady () {
   })
 }
 
-// create the index chosen from the video array
+// Create the index chosen from the video array
 var index = -1
 
 // 4. The API will call this function when the video player is ready.
@@ -146,10 +164,8 @@ var index = -1
 function onPlayerReady (event) {
   event.target.playVideo()
 }
-
-// 5. The API calls this function when the player's state changes.
+//    The API calls this function when the player's state changes.
 //    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
 var done = false
 function onPlayerStateChange (event) {
   if (event.data === 0) {
@@ -234,7 +250,7 @@ function stopVideo () {
   player.stopVideo()
 }
 
-//admin login
+// Admin login
 $('#admin').on('click', () => {
   event.preventDefault()
   var nameFront = $("#name").val()
@@ -242,16 +258,17 @@ $('#admin').on('click', () => {
   console.log(name)
   console.log(pw)
   $.get('/admin/creds').then(function(r){
-    var keys = r
+    var keys = r // GET response from admin login inputs
     console.log(keys[0].name)
     var nameBack = keys[0].name
     console.log(keys[0].password)
     var pwBack = keys[0].password
     if(nameFront === nameBack && pwFront === pwBack){
-      //show delete buttons once admin logs in
+
+      // Show delete buttons once admin logs in using jQuery show() method
       $(".deleteBtn").show()
       $(".deleteBtn").on("click", function(){
-        //upon click of delete button, remove selected song from db
+        // On click of delete button, remove selected song from db
         $.ajax({
           url: '/song/' + $(this).attr("data-value"),
           type: 'DELETE',
@@ -266,10 +283,3 @@ $('#admin').on('click', () => {
 
   })
 })
-
-// Working on a scroll to top button
-// $("#scrollUp").on('click', (function() {
-//   $("html, body").animate({ scrollTop: 0 }, "slow");
-//   return false;
-// }))
-
