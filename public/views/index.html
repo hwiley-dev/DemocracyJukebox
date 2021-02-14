@@ -18,7 +18,38 @@
 
 <body>
   <div class="main">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Democracy Jukebox</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Team
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Jacob Flores</a>
+              <a class="dropdown-item" href="#">Hunter Wiley</a>        
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+       
+        <!-- This may break admin login if form data is grabbed via jQuery classes    -->
+        
+        <form class="form-inline my-2 my-lg-0">
+
+          <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
+          <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label="Password">
+          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Login</button>
+        </form>
+      </div>
+    </nav>
     
     <div class="keyart" id="parallax">
       <div class="keyart_layer parallax" id="keyart-0" data-speed="2" style="transform: translate3d(0px, -9.7px, 0px)">
@@ -30,7 +61,7 @@
       </div>	
       <div class="container-fluid" style="border-bottom-style: double; border-width: 5px; border-color: black; line-height: 2.5px; opacity: .35"></div>
     <div class="container-fluid">
-      <form class="form-inline">
+      <!-- <form class="form-inline">
           <div class="form_group">
            <h4>Admin Login</h4>
             <label for='name'>Name: </label>
@@ -38,7 +69,7 @@
             <label for='pw'>Password: </label> 
             <input class="form-control" type="text" id='pw' name='pw'><button class="btn btn-default" id="admin" style="margin-left: 3px">Login</button>
           </div>
-      </form> 
+      </form>  -->
 
 
       
@@ -58,19 +89,22 @@
   <div class="container" id="bg">
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="mx-auto">
         <br> 
         <br>
         <h1>Search for a song</h1>
         <!-- this will have the form -->
-        <form class="form-inline">
+        <form class="form-inline bg-dark p-4 rounded align-self-start">
           <div class="form-group">
-            <label>Song Name</label>
-            <input class="form-control" id="songName">
+            <input class="form-control" id="songName" placeholder="Song Name">
+            <button type="submit" class="btn btn-outline-danger" id="sbmt">Add</button> 
           </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-default" id="sbmt">Submit</button>
+          <div class="mx-auto">
+            <i class="fas fa-music"></i>
+            <i class="fab fa-youtube-square"></i>
+            <i class="fas fa-music"></i>
           </div>
+          
         </form>
         
         <div id="nowPlayingDiv">

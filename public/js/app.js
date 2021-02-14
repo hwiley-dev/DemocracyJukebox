@@ -31,7 +31,7 @@ $('#sbmt').on('click', () => {
 })
 
 /* 
-  * @desc prints out the number of votes left to the user
+  @desc prints out the number of votes left to the user
 
 */
 function displayVoteCount() {

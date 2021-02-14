@@ -71,7 +71,7 @@ body {
 
 #keyart-5 {
   /* The image used */
-  background-image: url('../views/images/music_parallax - Copy.png');
+  background-image: url('../views/images/music_parallax.png');
   
 
   /* Full height */
@@ -85,46 +85,6 @@ body {
   
 }
 
-/* Parallax Styling */
-/* 
-#keyart-5 {
-  background-image: url(../views/images/headphone_parallax.png);
-  
-}
-
-#keyart-6 {
-  background-image: url(../views/images/music_parallax.png);
-
-}
-.keyart_layer {
-  background-position: bottom center;
-  background-size: auto 1038px;
-  background-repeat: repeat-x;
-  width: 100%;
-  position: absolute;
-}
-
-.keyart {
-  position: relative;
-  z-index: 10;
-}
-
-.keyart, .keyart_layer {
-  height: 1000px;
-}
-.keyart_layer.parallax {
-  position: fixed;
-}
-  
-.parallax {
-  display: block;
-}
-
-
- */
-* {
-  box-sizing: border-box;
-}
 #count {
   background: #9F0;
   width: 10%;
@@ -170,8 +130,9 @@ body {
 }
 
 body {
-  /* background-image: url("brushed-alum-dark-1920x1080.png") */
-  background-image: url("../views/images/brushed-alum-dark.png")
+ 
+  /* background-image: url("../views/images/bar_1920x1280.jpg"); */
+  background-color: rgba(216, 10, 10, 0.856);
 }
 
 .landingSpan {
