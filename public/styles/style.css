@@ -28,7 +28,7 @@ body {
 
 /* Trying to make main div with opaque background -- NOT WORKING  */
 .main {
-  background: rgba(117, 18, 0, .1);
+  background-image: url('../views/images/bar_1920x1280.jpg');
   height: 100%;
 }
 #logoName {
@@ -46,7 +46,7 @@ body {
 #ytLogo {
   height:270px; 
   width: 270px;
-  opacity: .9;
+  
 
 }
 
