@@ -21,7 +21,7 @@ body {
 }
 .mainPageWrapper{
   z-index: 4;
-  position: relative;
+  position: relative; 
   background-color: #262626;
 }
 .dashed {border-style: dashed;}
