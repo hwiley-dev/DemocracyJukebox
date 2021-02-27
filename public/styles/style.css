@@ -29,7 +29,7 @@ body {
 /* Trying to make main div with opaque background -- NOT WORKING  */
 .main {
   background-image: url('../views/images/bar_1920x1280.jpg');
-  background: rgba(117, 18, 0, .1);
+  
   height: 100%;
 }
 #logoName {
