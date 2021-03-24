@@ -17,62 +17,63 @@
 </head>
 
 <body>
-  <div class="main">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Democracy Jukebox</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- START NAV -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Democracy Jukebox</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Team
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Jacob Flores</a>
-              <a class="dropdown-item" href="#">Hunter Wiley</a>        
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-       
-        <!-- This may break admin login if form data is grabbed via jQuery classes    -->
-        
-        <form class="form-inline my-2 my-lg-0">
-
-          <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
-          <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label="Password">
-          <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Login</button>
-        </form>
-      </div>
-    </nav>
-    
-    <div class="keyart" id="parallax">
-      <div class="keyart_layer parallax" id="keyart-0" data-speed="2" style="transform: translate3d(0px, -9.7px, 0px)">
-        
-        <div id="logoContainer" class="mw-20 mx-auto">
-          <img src="../views/images/youtube_logo.png" id="ytLogo">
-          <h1 id="logoName">Youtube Data API</h1>
-          <h4>{ Democracy Jukebox }</h4>
-        </div>
-      </div>	
-      <div class="container-fluid" style="border-bottom-style: double; border-width: 5px; border-color: black; line-height: 2.5px; opacity: .35"></div>
-    <div class="container-fluid">
-  
-
-
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Team
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Jacob Flores</a>
+            <a class="dropdown-item" href="#">Hunter Wiley</a>        
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
       
- </div>     
- </div>
+      <!-- This may break admin login if form data is grabbed via jQuery classes    -->
+      
+      <form class="form-inline my-2 my-lg-0">
+        
+        <input class="form-control mr-sm-2" type="text" placeholder="Username" aria-label="Username">
+        <input class="form-control mr-sm-2" type="text" placeholder="Password" aria-label="Password">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Login</button>
+      </form>
+    </div>
+  </nav>
+  <!-- END NAV -->
+  <!-- END NAV -->
+
+
+  <!-- LANDING / FIRST CONTENTFUL PAINT -->
+<div class="container-fluid pb-5" id="main">
+  <div class="row justify-content-center">
+    <div class="mt-4 pt-4 px-sm-2 ">
+      <img src="../views/images/youtube_logo.png" class="rounded img-fluid" alt="Youtube-Image" >  
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div id="landing-txt">
+      <h1 class="d-block">Youtube Data API</h1>
+      <h4 class="d-block">{ Democracy Jukebox }</h4>
+    </div>
+  </div>    
+</div>
+     
+    
    
     <!-- Vote/Song-Input Container -->
 <div class="container">
-  <div class="container" id="bg">
-
+  <div class="container">
     <div class="row">
       <div class="mx-auto">
         <br> 
@@ -85,9 +86,9 @@
             <button type="submit" class="btn btn-outline-danger" id="sbmt">Add</button> 
           </div>
           <div class="mx-auto">
-            <i class="fas fa-music"></i>
-            <i class="fab fa-youtube-square"></i>
-            <i class="fas fa-music"></i>
+            <p class="text-light">
+              <a href="https://github.com/hwiley-dev/DemocracyJukebox">Fork Us on Github!</a>
+            </p>
           </div>
           
         </form>
@@ -107,24 +108,23 @@
       </div>
         
       <div id="results" class="col-md-6">
-          <div class="row">
-            <div class="col-md-6">
-              <br>
-              <br>
-              <div id="player"></div>
-              <div class="col-md-12">
-              </div>
-            </div>
+        <div class="row">
+           <div class="col">
+           <div id="player"></div>
           </div>
         </div>
       </div>
-    </div>
+          </div>
+        </div>
+      </div>
+    
     
     <br>
 
     <div class="container">
-      <h1 class="text-left tableName">Song List</h1> <h3 class="voteCountDiv"></h3>
-      <table class="table  text-center">
+      <h1 class="text-left tableName">Song List</h1>
+      <h3 class="voteCountDiv"></h3>
+      <table class="table text-center">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -134,17 +134,12 @@
             <th scope="col">Delete Song</th>
           </tr>
         </thead>
-        <tbody id="songs">
-          
+        <tbody id="songs">  
         </tbody>
       </table>
-
-      <!-- Making a scroll to top button -->
-      <!-- <div id="scrollUp" style="height: 25px; width: 25px; background-color: white"></div> -->
-
     </div>
-  </div>
-  </div>
+ 
+  
 
   <!-- jquery cdn -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

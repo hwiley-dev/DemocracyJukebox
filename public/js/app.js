@@ -1,3 +1,4 @@
+ 
 var $ = window.$
 let voteCount = 3
 

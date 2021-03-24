@@ -1,7 +1,4 @@
-body, html {
-  height: 100%;
-  color: whitesmoke;
-}
+
 
 body {
   background: rgba(117, 18, 0);
@@ -13,78 +10,24 @@ body {
   float: right;
   padding-top:10px;
 }
-.loginPanel{
-  margin-top: -10;
-  padding-top: 25px;
-  z-index: 3;
-  position: relative;
-}
-.mainPageWrapper{
-  z-index: 4;
-  position: relative; 
-  background-color: #262626;
-}
+
+
 .dashed {border-style: dashed;}
 
 /* Trying to make main div with opaque background -- NOT WORKING  */
-.main {
-  background-image: url('../views/images/bar_1920x1280.jpg');
-  
-  height: 100%;
-}
-#logoName {
-  margin-top: 20px;
-}
-
-#logoContainer {
-  position: fixed;
-  height: 500px;
-  top: 25%;
-  left: 45%;
-  text-align: center;
-  z-index: 2;
-}
-#ytLogo {
-  height:270px; 
-  width: 270px;
-  
-
-}
-
-#keyart-0 {
-  /* The image used */
-  background-image: url('../views/images/skyline.png');
-  /* Full height */
-  /* height: 710px; */
-  height:100vh;
-  padding-top: 150px;
-  /* position: absolute; */
-  /* top: 100px; */
-    
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+#main {
+  background-image: url('../views/images/wurli.jpg');
   background-size: cover;
-  z-index: 1;
-  
-}
-
-#keyart-5 {
-  /* The image used */
-  background-image: url('../views/images/music_parallax.png');
-  
-
-  /* Full height */
-  height: 800px; 
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  
+  height: 60%;
 }
+
+#landing-txt {
+  color: black
+}
+
+
+
 
 #count {
   background: #9F0;
@@ -98,16 +41,6 @@ body {
   border-radius: 5px;
 }
 
-.button {
-  background: #09F;
-  width: 5%;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  font-size: 32px;
-  border: 3px solid blue;
-  border-radius: 5px;
-}
 
 .button, #count {
   float: left;
@@ -136,9 +69,3 @@ body {
   background-color: rgba(216, 10, 10, 0.856);
 }
 
-.landingSpan {
-  font-size: 50px;
-  position: absolute;
-  top: 100px;
-  transform: translate3d(0px, -9.7px, 0px);
-}
